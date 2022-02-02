@@ -4,15 +4,18 @@ import com.hwai.backend.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Getter
+@ToString
 @NoArgsConstructor
 @Entity
 public class User extends BaseTimeEntity {
 
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -22,7 +25,7 @@ public class User extends BaseTimeEntity {
     private String birth;
 
     @Column
-    private String phone;
+    private String tel;
 
     @Column
     private String email;
@@ -34,10 +37,10 @@ public class User extends BaseTimeEntity {
     private boolean admin;
 
     @Builder
-    public User(String name, String birth, String phone, String email, String pwd, boolean admin){
+    public User(String name, String birth, String tel, String email, String pwd, boolean admin){
         this.name = name;
         this.birth = birth;
-        this.phone = phone;
+        this.tel = tel;
         this.email = email;
         this.pwd = pwd;
         this.admin = admin;
