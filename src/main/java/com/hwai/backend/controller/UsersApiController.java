@@ -19,8 +19,8 @@ public class UsersApiController {
 
     @PostMapping("/join")
     @ResponseStatus(HttpStatus.CREATED)
-    public Long signUp(@RequestBody UsersJoinRequestDto requestDto){
-        return usersService.signUp(requestDto);
+    public Long signUp(@RequestBody UsersJoinRequestDto usersJoinRequestDto){
+        return usersService.signUp(usersJoinRequestDto);
     }
 
     @GetMapping("/login")
