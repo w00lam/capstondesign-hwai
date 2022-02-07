@@ -22,9 +22,9 @@ public class UsersService {
 
     @Transactional(readOnly = true)
     public LoginResponseDto login(LoginRequestDto loginRequestDto) {
-        Users users = usersRepository.findByEmail(loginRequestDto.getEmail())
-                .orElseThrow(() -> new IllegalArgumentException("해당 이메일이 없습니다. EMAIL="+
+        Users findUser = usersRepository.findByEmail(loginRequestDto.getEmail())
+                .orElseThrow(() -> new IllegalArgumentException("해당 이메일이 없습니다. email="+
                         loginRequestDto.getEmail()));
-        return new LoginResponseDto(users.getId());
+        return new LoginResponseDto(findUser.getId());
     }
 }
