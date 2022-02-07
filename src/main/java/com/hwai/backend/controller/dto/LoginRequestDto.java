@@ -10,12 +10,10 @@ public class LoginRequestDto {
 
     private String email;
     private String pw;
-    private boolean admin;
 
     @Builder
-    public LoginRequestDto(String email, String pw, boolean admin) {
+    public LoginRequestDto(String email, String pw) {
         this.email = email;
         this.pw = pw;
-        this.admin = admin;
     }
 }

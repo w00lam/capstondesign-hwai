@@ -2,7 +2,7 @@ package com.hwai.backend.controller;
 
 import com.hwai.backend.controller.dto.LoginRequestDto;
 import com.hwai.backend.controller.dto.LoginResponseDto;
-import com.hwai.backend.controller.dto.UsersJoinRequestDto;
+import com.hwai.backend.controller.dto.JoinRequestDto;
 import com.hwai.backend.service.users.UsersService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,8 +19,8 @@ public class UsersController {
 
     @PostMapping("/join")
     @ResponseStatus(HttpStatus.CREATED)
-    public Long signUp(@RequestBody UsersJoinRequestDto usersJoinRequestDto){
-        return usersService.signUp(usersJoinRequestDto);
+    public Long joinUser(@RequestBody JoinRequestDto usersJoinRequestDto){
+        return usersService.join(usersJoinRequestDto);
     }
 
     @GetMapping("/login")

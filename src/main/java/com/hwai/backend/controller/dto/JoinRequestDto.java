@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class UsersJoinRequestDto {
+public class JoinRequestDto {
     private String name;
     private String birth;
     private String tel;
@@ -16,7 +16,7 @@ public class UsersJoinRequestDto {
     private boolean admin;
 
     @Builder
-    public UsersJoinRequestDto(String name, String birth, String tel, String email, String pw, boolean admin) {
+    public JoinRequestDto(String name, String birth, String tel, String email, String pw, boolean admin) {
         this.name = name;
         this.birth = birth;
         this.tel = tel;
