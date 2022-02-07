@@ -23,7 +23,7 @@ public class UsersController {
         return usersService.join(usersJoinRequestDto);
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     @ResponseStatus(HttpStatus.OK)
     public LoginResponseDto findById(@RequestBody LoginRequestDto loginRequestDto) {
         return usersService.login(loginRequestDto);
