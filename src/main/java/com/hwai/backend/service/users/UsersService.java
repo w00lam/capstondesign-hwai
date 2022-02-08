@@ -26,7 +26,7 @@ public class UsersService {
         Users findUser = usersRepository.findByEmail(loginRequestDto.getEmail())
                 .orElseThrow(() -> new IllegalArgumentException("해당 이메일이 없습니다. email="+
                         loginRequestDto.getEmail()));
-        return new LoginResponseDto(findUser.getId(), findUser.getName(), findUser.isAdmin(), 1234567890);
+        return new LoginResponseDto(findUser.getId(), findUser.getName(), findUser.isAdmin(), 123456);
     }
 
     private void checkDuplicateEmail(String email) {
