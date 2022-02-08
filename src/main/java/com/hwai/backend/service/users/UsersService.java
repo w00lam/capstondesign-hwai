@@ -25,6 +25,6 @@ public class UsersService {
         Users findUser = usersRepository.findByEmail(loginRequestDto.getEmail())
                 .orElseThrow(() -> new IllegalArgumentException("해당 이메일이 없습니다. email="+
                         loginRequestDto.getEmail()));
-        return new LoginResponseDto(findUser.getId());
+        return new LoginResponseDto(findUser.getId(), findUser.getName(), findUser.isAdmin());
     }
 }

@@ -7,8 +7,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class LoginResponseDto {
     private Long id;
+    private String name;
+    private boolean admin;
 
-    public LoginResponseDto(Long id) {
+    public LoginResponseDto(Long id, String name, boolean admin) {
         this.id = id;
+        this.name = name;
+        this.admin = admin;
     }
 }
