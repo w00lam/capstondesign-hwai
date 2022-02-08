@@ -28,4 +28,5 @@ public class UsersController {
     public LoginResponseDto findById(@RequestBody LoginRequestDto loginRequestDto) {
         return usersService.login(loginRequestDto);
     }
+
 }
