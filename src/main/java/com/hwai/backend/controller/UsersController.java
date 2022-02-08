@@ -19,8 +19,8 @@ public class UsersController {
 
     @PostMapping("/join")
     @ResponseStatus(HttpStatus.CREATED)
-    public Long joinUser(@RequestBody JoinRequestDto usersJoinRequestDto){
-        return usersService.join(usersJoinRequestDto);
+    public Long joinUser(@RequestBody JoinRequestDto joinRequestDto){
+        return usersService.join(joinRequestDto);
     }
 
     @PostMapping("/login")
