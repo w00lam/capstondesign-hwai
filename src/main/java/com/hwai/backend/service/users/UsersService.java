@@ -26,12 +26,19 @@ public class UsersService {
         Users findUser = usersRepository.findByEmail(loginRequestDto.getEmail())
                 .orElseThrow(() -> new IllegalArgumentException("해당 이메일이 없습니다. email="+
                         loginRequestDto.getEmail()));
+        validatePassword(loginRequestDto, findUser.getPw());
         return new LoginResponseDto(findUser.getId(), findUser.getName(), findUser.isAdmin(), 123456);
     }
 
     private void checkDuplicateEmail(String email) {
         if (usersRepository.existsByEmail(email)) {
             throw new IllegalArgumentException("중복 이메일입니다.");
+        }
+    }
+
+    private void validatePassword(LoginRequestDto loginRequestDto, String password) {
+        if (!(loginRequestDto.getPw()).equals(password)) {
+            throw new IllegalArgumentException("비밀번호 불일치입니다.");
         }
     }
 }
