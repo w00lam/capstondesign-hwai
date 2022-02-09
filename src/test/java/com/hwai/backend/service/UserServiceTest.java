@@ -33,7 +33,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void 회원가입_성공() {
+    public void 회원가입_성공() {
         //given
         JoinRequestDto joinRequestDto = JoinRequestDto.builder()
                 .email("test@naver.com")
@@ -52,7 +52,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void 회원탈퇴_성공() {
+    public void 회원탈퇴_성공() {
         //given
         User user = User.builder()
                 .email("test@naver.com")
@@ -72,7 +72,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void 회원중복() {
+    public void 회원중복() {
         //given
         User user = User.builder()
                 .email("test@naver.com")
@@ -99,7 +99,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void 로그인_성공() {
+    public void 로그인_성공() {
         //given
         JoinRequestDto joinRequestDto = JoinRequestDto.builder()
                 .email("test@naver.com")
@@ -122,7 +122,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void 로그인_이메일_불일치() {
+    public void 로그인_이메일_불일치() {
         //given
         User user = User.builder()
                 .email("test@naver.com")
@@ -143,7 +143,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void 로그인_비밀번호_불일치() {
+    public void 로그인_비밀번호_불일치() {
         //given
         User user = User.builder()
                 .email("test@naver.com")
