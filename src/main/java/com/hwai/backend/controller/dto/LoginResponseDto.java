@@ -18,5 +18,6 @@ public class LoginResponseDto {
         this.name = name;
         this.admin = admin;
         this.pinNum = pinNum;
+        this.message = message.getMessage();
     }
 }
