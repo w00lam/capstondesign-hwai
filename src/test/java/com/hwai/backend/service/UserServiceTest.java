@@ -1,8 +1,6 @@
 package com.hwai.backend.service;
 
-import com.hwai.backend.controller.dto.JoinRequestDto;
-import com.hwai.backend.controller.dto.LoginRequestDto;
-import com.hwai.backend.controller.dto.LoginResponseDto;
+import com.hwai.backend.controller.dto.*;
 import com.hwai.backend.domain.message.Message;
 import com.hwai.backend.domain.user.User;
 import com.hwai.backend.domain.user.UserRepository;
@@ -91,7 +89,6 @@ public class UserServiceTest {
                 .pw("1234")
                 .admin(false)
                 .build();
-
         //when
         //then
         assertThatThrownBy(() -> userService.join(joinRequestDto)).isInstanceOf(IllegalArgumentException.class)
@@ -111,11 +108,11 @@ public class UserServiceTest {
                 .build();
         userService.join(joinRequestDto);
         User findUser = userRepository.findByEmail("test@naver.com")
-                .orElseThrow(() -> new IllegalArgumentException("회원가입 실패"));
-        LoginRequestDto LoginRequestDto = new LoginRequestDto("test@naver.com", "1234");
+                .orElseThrow(() -> new IllegalArgumentException("로그인 실패"));
+        LoginRequestDto loginRequestDto = new LoginRequestDto("test@naver.com", "1234");
 
         //when
-        LoginResponseDto login = userService.login(LoginRequestDto);
+        LoginResponseDto login = userService.login(loginRequestDto);
 
         //then
         assertThat(login.getId()).isEqualTo(findUser.getId());
@@ -132,12 +129,12 @@ public class UserServiceTest {
                 .pw("1234")
                 .admin(false)
                 .build();
-        LoginRequestDto LoginRequestDto = new LoginRequestDto("test@navar.com", "1234");
+        LoginRequestDto loginRequestDto = new LoginRequestDto("test@navar.com", "1234");
         userRepository.save(user);
 
         //when
         //then
-        assertThatThrownBy(() -> userService.login(LoginRequestDto))
+        assertThatThrownBy(() -> userService.login(loginRequestDto))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("해당 유저가 존재하지 않습니다.");
     }
@@ -153,12 +150,61 @@ public class UserServiceTest {
                 .pw("1234")
                 .admin(false)
                 .build();
-        LoginRequestDto LoginRequestDto = new LoginRequestDto("test@naver.com", "12346");
+        LoginRequestDto loginRequestDto = new LoginRequestDto("test@naver.com", "12346");
         userRepository.save(user);
         //when
         //then
-        assertThatThrownBy(() -> userService.login(LoginRequestDto))
+        assertThatThrownBy(() -> userService.login(loginRequestDto))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("비밀번호가 일치하지 않습니다.");
+    }
+
+    @Test
+    public void 페이지_불러오기() {
+        //given
+        User user = User.builder()
+                .email("test@naver.com")
+                .name("tester")
+                .birth("111111")
+                .tel("010-1111-2222")
+                .pw("1234")
+                .admin(false)
+                .build();
+        User save = userRepository.save(user);
+
+        //when
+        UserPageResponseDto userPageResponseDto = userService.page(save.getId());
+
+        //then
+        assertThat(userPageResponseDto.getEmail()).isEqualTo("test@naver.com");
+        assertThat(userPageResponseDto.getName()).isEqualTo("tester");
+        assertThat(userPageResponseDto.getBirth()).isEqualTo("111111");
+        assertThat(userPageResponseDto.getTel()).isEqualTo("010-1111-2222");
+        assertThat(userPageResponseDto.getPw()).isEqualTo("1234");
+    }
+
+    @Test
+    public void 비밀번호_변경() {
+        //given
+        User user = User.builder()
+                .email("test@naver.com")
+                .name("tester")
+                .birth("111111")
+                .tel("010-1111-2222")
+                .pw("1234")
+                .admin(false)
+                .build();
+        User save = userRepository.save(user);
+        Long updateId = user.getId();
+        String expectedPw = "12345";
+
+        //when
+        PwUpdateRequestDto pwUpdateRequestDto = PwUpdateRequestDto.builder()
+                .id(updateId)
+                .new_pw(expectedPw)
+                .build();
+
+        //then
+        assertThat(pwUpdateRequestDto.getNew_pw()).isEqualTo(expectedPw);
     }
 }

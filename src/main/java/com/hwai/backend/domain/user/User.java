@@ -33,7 +33,7 @@ public class User {
     @Column(nullable = false)
     private boolean admin;
 /**
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "user")
     private List<Book> Booklist = new ArrayList<>();
 */
     @Builder
@@ -44,5 +44,9 @@ public class User {
         this.email = email;
         this.pw = pw;
         this.admin = admin;
+    }
+
+    public void update(String new_pw){
+        this.pw = new_pw;
     }
 }

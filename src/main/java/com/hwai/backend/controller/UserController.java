@@ -1,8 +1,6 @@
 package com.hwai.backend.controller;
 
-import com.hwai.backend.controller.dto.LoginRequestDto;
-import com.hwai.backend.controller.dto.LoginResponseDto;
-import com.hwai.backend.controller.dto.JoinRequestDto;
+import com.hwai.backend.controller.dto.*;
 import com.hwai.backend.domain.message.Message;
 import com.hwai.backend.service.user.UserService;
 import lombok.RequiredArgsConstructor;
@@ -17,12 +15,13 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private static final String LOGIN_SUCCESS_MESSAGE = "로그인 성공";
+    private static final String VIEW_MY_PAGE_SUCCESS_MESSAGE = "마이페이지 조회 성공";
 
     private final UserService userService;
 
     @PostMapping("/join")
     @ResponseStatus(HttpStatus.CREATED)
-    public Message joinUser(@RequestBody JoinRequestDto joinRequestDto){
+    public Message signUp(@RequestBody JoinRequestDto joinRequestDto){
         Message message = userService.join(joinRequestDto);
         log.info(message.getMessage());
         return message;
@@ -31,21 +30,37 @@ public class UserController {
     @DeleteMapping("/withdraw/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void withdraw(@PathVariable(value = "id") Long id) {
-        Message withdrawSuccess = userService.withdraw(id);
-        log.info(withdrawSuccess.getMessage());
+        Message message = userService.withdraw(id);
+        log.info(message.getMessage());
     }
 
     @PostMapping("/login")
     @ResponseStatus(HttpStatus.OK)
     public LoginResponseDto findById(@RequestBody LoginRequestDto loginRequestDto) {
+        LoginResponseDto loginResponseDto = userService.login(loginRequestDto);
         log.info(LOGIN_SUCCESS_MESSAGE);
-        return userService.login(loginRequestDto);
+        return loginResponseDto;
     }
 
     @GetMapping("/logout/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void logout(@PathVariable(value = "id") Long id) {
-        Message logoutSuccess = userService.logout(id);
-        log.info(logoutSuccess.getMessage());
+        Message message = userService.logout(id);
+        log.info(message.getMessage());
+    }
+
+    @GetMapping("/page/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public UserPageResponseDto findById(@PathVariable(value = "id") Long id){
+        UserPageResponseDto userPageResponseDto = userService.page(id);
+        log.info(VIEW_MY_PAGE_SUCCESS_MESSAGE);
+        return userPageResponseDto;
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.OK)
+    public void update(@RequestBody PwUpdateRequestDto pwUpdateRequestDto) {
+        Message message = userService.update(pwUpdateRequestDto);
+        log.info(message.getMessage());
     }
 }
