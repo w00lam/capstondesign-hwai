@@ -16,11 +16,11 @@ public class UserPageResponseDto {
     private String message;
 
     public UserPageResponseDto(User entity, Message message) {
-        this.name = getName();
-        this.birth = getBirth();
-        this.tel = getTel();
-        this.email = getEmail();
-        this.pw = getBirth();
+        this.name = entity.getName();
+        this.birth = entity.getBirth();
+        this.tel = entity.getTel();
+        this.email = entity.getEmail();
+        this.pw = entity.getPw();
         this.message = message.getMessage();
     }
 }
