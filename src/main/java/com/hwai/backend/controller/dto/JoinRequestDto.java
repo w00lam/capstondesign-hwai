@@ -1,6 +1,6 @@
 package com.hwai.backend.controller.dto;
 
-import com.hwai.backend.domain.users.Users;
+import com.hwai.backend.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,8 +25,8 @@ public class JoinRequestDto {
         this.admin = admin;
     }
 
-    public Users toEntity() {
-        return Users.builder()
+    public User toEntity() {
+        return User.builder()
                 .name(name)
                 .birth(birth)
                 .tel(tel)
