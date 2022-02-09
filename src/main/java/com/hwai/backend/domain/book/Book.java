@@ -1,3 +1,4 @@
+/**
 package com.hwai.backend.domain.book;
 
 import com.hwai.backend.domain.user.User;
@@ -42,3 +43,4 @@ public class Book {
         user.getBooklist().add(this);
     }
 }
+*/
