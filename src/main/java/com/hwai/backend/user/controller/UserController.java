@@ -58,10 +58,10 @@ public class UserController {
         return userPageResponseDto;
     }
 
-    @PatchMapping("/page/{id}")
+    @PatchMapping("/pw")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable("id") Long id, PwUpdateRequestDto pwUpdateRequestDto) {
-        Message message = userService.updatePw(id, pwUpdateRequestDto);
+    public void update(@RequestBody PwUpdateRequestDto pwUpdateRequestDto) {
+        Message message = userService.updatePw(pwUpdateRequestDto);
         log.info(message.getMessage());
     }
 }

@@ -66,8 +66,8 @@ public class UserService {
     }
 
     @Transactional
-    public Message updatePw(Long id, PwUpdateRequestDto pwUpdateRequestDto) {
-        User user = userRepository.findById(id)
+    public Message updatePw(PwUpdateRequestDto pwUpdateRequestDto) {
+        User user = userRepository.findById(pwUpdateRequestDto.getId())
                 .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_MESSAGE));
         validatePasswordForNotEqual(pwUpdateRequestDto, user.getPw());
         user.updatePw(pwUpdateRequestDto);

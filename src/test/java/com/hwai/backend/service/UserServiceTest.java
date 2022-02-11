@@ -199,8 +199,6 @@ public class UserServiceTest {
                 .pw("1234")
                 .admin(false)
                 .build();
-        User save = userRepository.save(user);
-        Long updateId = user.getId();
         String expectedPw = "12345";
 
         //when
