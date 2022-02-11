@@ -1,7 +1,6 @@
 package com.hwai.backend.controller.book;
 
 import com.hwai.backend.controller.book.dto.LendRequestDto;
-import com.hwai.backend.domain.book.BookRepository;
 import com.hwai.backend.domain.message.Message;
 import com.hwai.backend.service.book.BookService;
 import lombok.RequiredArgsConstructor;
@@ -11,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/books")
 @RestController
+@RequestMapping("/api/v1/books")
 public class BookController {
 
     private final BookService bookService;

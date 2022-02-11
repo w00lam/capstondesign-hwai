@@ -1,5 +1,6 @@
 package com.hwai.backend.service.book;
 
+import com.hwai.backend.common.exception.BadRequestException;
 import com.hwai.backend.common.exception.NotFoundException;
 import com.hwai.backend.controller.book.dto.LendRequestDto;
 import com.hwai.backend.domain.book.Book;
@@ -24,16 +25,19 @@ public class BookService {
     @Transactional
     public Message lend(LendRequestDto lendRequestDto) {
         for(Long id : lendRequestDto.getBook_id()){
-            Book findBook = bookRepository.findById(id)
-                    .orElseThrow(() -> new NotFoundException(BOOK_NOT_FOUND_MESSAGE));
+            bookRepository.findById(id).orElseThrow(() -> new NotFoundException(BOOK_NOT_FOUND_MESSAGE));
         }
         User findUser = userRepository.findById(lendRequestDto.getUser_id())
                 .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_MESSAGE));
         for(Long id : lendRequestDto.getBook_id()){
-            Book findBook = bookRepository.findById(id)
-                    .orElseThrow(() -> new NotFoundException(BOOK_NOT_FOUND_MESSAGE));
+            Book findBook = findBookById(id);
             findBook.lend(findUser);
         }
         return new Message(LEND_BOOK_MESSAGE);
+    }
+
+    private Book findBookById(Long bookId) {
+        return bookRepository.findById(bookId)
+                .orElseThrow(() -> new BadRequestException(BOOK_NOT_FOUND_MESSAGE));
     }
 }

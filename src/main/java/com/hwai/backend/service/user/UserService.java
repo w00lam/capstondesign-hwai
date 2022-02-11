@@ -1,5 +1,6 @@
 package com.hwai.backend.service.user;
 
+import com.hwai.backend.common.exception.BadRequestException;
 import com.hwai.backend.common.exception.NotFoundException;
 import com.hwai.backend.controller.user.dto.*;
 import com.hwai.backend.domain.message.Message;
@@ -75,19 +76,19 @@ public class UserService {
 
     private void checkDuplicateEmail(String email) {
         if (userRepository.existsByEmail(email)) {
-            throw new IllegalArgumentException(EMAIL_DUPLICATION_MESSAGE);
+            throw new BadRequestException(EMAIL_DUPLICATION_MESSAGE);
         }
     }
 
     private void validatePasswordForEqual(LoginRequestDto loginRequestDto, String pw) {
         if (!(loginRequestDto.getPw()).equals(pw)) {
-            throw new IllegalArgumentException(PASSWORD_NOT_EQUAL_MESSAGE);
+            throw new BadRequestException(PASSWORD_NOT_EQUAL_MESSAGE);
         }
     }
 
     private void validatePasswordForNotEqual(PwUpdateRequestDto pwUpdateRequestDto, String pw) {
         if ((pwUpdateRequestDto.getNew_pw()).equals(pw)) {
-            throw new IllegalArgumentException(PASSWORD_EQUAL_MESSAGE);
+            throw new BadRequestException(PASSWORD_EQUAL_MESSAGE);
         }
     }
 
