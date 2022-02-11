@@ -66,12 +66,4 @@ public class UserController {
         Message message = userService.updatePw(pwUpdateRequestDto);
         log.info(message.getMessage());
     }
-
-    @PostMapping("/save")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Message save(@RequestBody BookSaveRequestDto bookSaveRequestDto) {
-        Message message = bookService.save(bookSaveRequestDto);
-        log.info(message.getMessage());
-        return message;
-    }
 }
