@@ -1,6 +1,6 @@
 package com.hwai.backend.service;
 
-import com.hwai.backend.controller.dto.*;
+import com.hwai.backend.controller.user.dto.*;
 import com.hwai.backend.domain.message.Message;
 import com.hwai.backend.domain.user.User;
 import com.hwai.backend.domain.user.UserRepository;
@@ -184,7 +184,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void 비밀번호_변경() {
+    public void 비밀번호_변경_성공() {
         //given
         User user = User.builder()
                 .email("test@naver.com")

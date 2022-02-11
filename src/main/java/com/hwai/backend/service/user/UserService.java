@@ -1,6 +1,7 @@
 package com.hwai.backend.service.user;
 
-import com.hwai.backend.controller.dto.*;
+import com.hwai.backend.common.exception.NotFoundException;
+import com.hwai.backend.controller.user.dto.*;
 import com.hwai.backend.domain.message.Message;
 import com.hwai.backend.domain.user.User;
 import com.hwai.backend.domain.user.UserRepository;
@@ -27,7 +28,8 @@ public class UserService {
     @Transactional
     public Message join(JoinRequestDto joinRequestDto) {
         checkDuplicateEmail(joinRequestDto.getEmail());
-        userRepository.save(joinRequestDto.toEntity());
+        User user = joinRequestDto.toEntity();
+        userRepository.save(user);
         return new Message(SIGN_UP_SUCCESS_MESSAGE);
     }
 
@@ -41,8 +43,8 @@ public class UserService {
     @Transactional(readOnly = true)
     public LoginResponseDto login(LoginRequestDto loginRequestDto) {
         User findUser = userRepository.findByEmail(loginRequestDto.getEmail())
-                .orElseThrow(() -> new IllegalArgumentException(USER_NOT_FOUND_MESSAGE));
-        validatePassword_for_equal(loginRequestDto, findUser.getPw());
+                .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_MESSAGE));
+        validatePasswordForEqual(loginRequestDto, findUser.getPw());
         LoginResponseDto loginResponseDto = new LoginResponseDto(findUser.getId(), findUser.getName(), findUser.isAdmin(),
                 123456, new Message(LOGIN_SUCCESS_MESSAGE));
         return loginResponseDto;
@@ -51,24 +53,23 @@ public class UserService {
     @Transactional(readOnly = true)
     public Message logout(Long id) {
         userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException(USER_NOT_FOUND_MESSAGE));
+                .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_MESSAGE));
         return new Message(LOGOUT_SUCCESS_MESSAGE);
     }
 
     @Transactional(readOnly = true)
     public UserPageResponseDto page(Long id) {
-        User findUser = userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException(USER_NOT_FOUND_MESSAGE));
-        UserPageResponseDto userPageResponseDto = new UserPageResponseDto(findUser, new Message(USER_INFO_MESSAGE));
+        User user = findUserById(id);
+        UserPageResponseDto userPageResponseDto = new UserPageResponseDto(user, new Message(USER_INFO_MESSAGE));
         return userPageResponseDto;
     }
 
     @Transactional
-    public Message update(PwUpdateRequestDto pwUpdateRequestDto){
-        User findUser = userRepository.findById(pwUpdateRequestDto.getId())
-                .orElseThrow(() -> new IllegalArgumentException(USER_NOT_FOUND_MESSAGE));
-        validatePassword_for_not_equal(pwUpdateRequestDto, findUser.getPw());
-        findUser.update(pwUpdateRequestDto.getNew_pw());
+    public Message updatePw(PwUpdateRequestDto pwUpdateRequestDto) {
+        User user = userRepository.findById(pwUpdateRequestDto.getId())
+                .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_MESSAGE));
+        validatePasswordForNotEqual(pwUpdateRequestDto, user.getPw());
+        user.updatePw(pwUpdateRequestDto.getNew_pw());
         return new Message(UPDATE_PW_MESSAGE);
     }
 
@@ -78,13 +79,13 @@ public class UserService {
         }
     }
 
-    private void validatePassword_for_equal(LoginRequestDto loginRequestDto, String pw) {
+    private void validatePasswordForEqual(LoginRequestDto loginRequestDto, String pw) {
         if (!(loginRequestDto.getPw()).equals(pw)) {
             throw new IllegalArgumentException(PASSWORD_NOT_EQUAL_MESSAGE);
         }
     }
 
-    private void validatePassword_for_not_equal(PwUpdateRequestDto pwUpdateRequestDto, String pw) {
+    private void validatePasswordForNotEqual(PwUpdateRequestDto pwUpdateRequestDto, String pw) {
         if ((pwUpdateRequestDto.getNew_pw()).equals(pw)) {
             throw new IllegalArgumentException(PASSWORD_EQUAL_MESSAGE);
         }

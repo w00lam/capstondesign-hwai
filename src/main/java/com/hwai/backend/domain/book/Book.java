@@ -1,4 +1,3 @@
-/**
 package com.hwai.backend.domain.book;
 
 import com.hwai.backend.domain.user.User;
@@ -16,10 +15,13 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long book_id;
+    private Long id;
 
     @Column(nullable = false)
     private String title;
+
+    @Column(nullable = false)
+    private String genre;
 
     private LocalDateTime due_date;
 
@@ -30,17 +32,16 @@ public class Book {
     private User user;
 
     @Builder
-    public Book(Long book_id, String title, LocalDateTime due_date, String current) {
-        this.book_id = book_id;
+    public Book(Long id, String title, String genre) {
+        this.id = id;
         this.title = title;
-        this.due_date = due_date;
-        this.current = current;
-        setUser(user);
+        this.genre = genre;
     }
 
-    private void setUser(User user) {
+    public void lend(User user) {
         this.user = user;
-        user.getBooklist().add(this);
+        user.getBooks().add(this);
+        this.due_date = LocalDateTime.now().plusDays(14);
+        this.current = "대출중";
     }
 }
-*/

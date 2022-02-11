@@ -1,10 +1,13 @@
 package com.hwai.backend.domain.user;
 
+import com.hwai.backend.domain.book.Book;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -32,10 +35,10 @@ public class User {
 
     @Column(nullable = false)
     private boolean admin;
-/**
-    @OneToMany(mappedBy = "user")
-    private List<Book> Booklist = new ArrayList<>();
-*/
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Book> books = new ArrayList<>();
+
     @Builder
     public User(String name, String birth, String tel, String email, String pw, boolean admin) {
         this.name = name;
@@ -46,7 +49,7 @@ public class User {
         this.admin = admin;
     }
 
-    public void update(String new_pw){
+    public void updatePw(String new_pw){
         this.pw = new_pw;
     }
 }
