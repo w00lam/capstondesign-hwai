@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RequiredArgsConstructor
+@RequestMapping("api/v1/books")
 @RestController
 public class BookController {
 
     private final BookService bookService;
 
-    @PostMapping("/api/v1/books/save")
+    @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Message save(@RequestBody BookSaveRequestDto bookSaveRequestDto) {
         Message message = bookService.save(bookSaveRequestDto);
