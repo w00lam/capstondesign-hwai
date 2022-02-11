@@ -1,6 +1,6 @@
-package com.hwai.backend.domain.user;
+package com.hwai.backend.user.domian;
 
-import com.hwai.backend.domain.book.Book;
+import com.hwai.backend.book.domain.Book;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

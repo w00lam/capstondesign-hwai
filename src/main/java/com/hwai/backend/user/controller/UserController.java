@@ -1,8 +1,8 @@
-package com.hwai.backend.controller.user;
+package com.hwai.backend.user.controller;
 
-import com.hwai.backend.controller.user.dto.*;
-import com.hwai.backend.domain.message.Message;
-import com.hwai.backend.service.user.UserService;
+import com.hwai.backend.common.message.Message;
+import com.hwai.backend.user.controller.dto.*;
+import com.hwai.backend.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

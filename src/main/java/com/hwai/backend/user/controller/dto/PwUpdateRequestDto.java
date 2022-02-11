@@ -1,4 +1,4 @@
-package com.hwai.backend.controller.user.dto;
+package com.hwai.backend.user.controller.dto;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.hwai.backend.domain.message;
+package com.hwai.backend.common.message;
 
 import lombok.Getter;
 

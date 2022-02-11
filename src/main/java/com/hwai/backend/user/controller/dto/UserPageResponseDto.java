@@ -1,7 +1,7 @@
-package com.hwai.backend.controller.user.dto;
+package com.hwai.backend.user.controller.dto;
 
-import com.hwai.backend.domain.message.Message;
-import com.hwai.backend.domain.user.User;
+import com.hwai.backend.common.message.Message;
+import com.hwai.backend.user.domian.User;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

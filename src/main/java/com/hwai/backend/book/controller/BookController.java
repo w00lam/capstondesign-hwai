@@ -1,8 +1,8 @@
-package com.hwai.backend.controller.book;
+package com.hwai.backend.book.controller;
 
-import com.hwai.backend.controller.book.dto.LendRequestDto;
-import com.hwai.backend.domain.message.Message;
-import com.hwai.backend.service.book.BookService;
+import com.hwai.backend.book.controller.dto.LendRequestDto;
+import com.hwai.backend.common.message.Message;
+import com.hwai.backend.book.service.BookService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

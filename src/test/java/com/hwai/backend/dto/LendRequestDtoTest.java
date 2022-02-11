@@ -1,6 +1,6 @@
 package com.hwai.backend.dto;
 
-import com.hwai.backend.controller.book.dto.LendRequestDto;
+import com.hwai.backend.book.controller.dto.LendRequestDto;
 import org.junit.Test;
 
 import java.util.ArrayList;

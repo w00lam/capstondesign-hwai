@@ -1,13 +1,13 @@
-package com.hwai.backend.service.book;
+package com.hwai.backend.book.service;
 
 import com.hwai.backend.common.exception.BadRequestException;
 import com.hwai.backend.common.exception.NotFoundException;
-import com.hwai.backend.controller.book.dto.LendRequestDto;
-import com.hwai.backend.domain.book.Book;
-import com.hwai.backend.domain.book.BookRepository;
-import com.hwai.backend.domain.message.Message;
-import com.hwai.backend.domain.user.User;
-import com.hwai.backend.domain.user.UserRepository;
+import com.hwai.backend.book.controller.dto.LendRequestDto;
+import com.hwai.backend.book.domain.Book;
+import com.hwai.backend.book.domain.BookRepository;
+import com.hwai.backend.common.message.Message;
+import com.hwai.backend.user.domian.User;
+import com.hwai.backend.user.domian.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

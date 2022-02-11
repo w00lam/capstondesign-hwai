@@ -1,5 +1,6 @@
-package com.hwai.backend.domain.user;
+package com.hwai.backend.user.domian;
 
+import com.hwai.backend.user.domian.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,11 +1,11 @@
-package com.hwai.backend.service.user;
+package com.hwai.backend.user.service;
 
 import com.hwai.backend.common.exception.BadRequestException;
 import com.hwai.backend.common.exception.NotFoundException;
-import com.hwai.backend.controller.user.dto.*;
-import com.hwai.backend.domain.message.Message;
-import com.hwai.backend.domain.user.User;
-import com.hwai.backend.domain.user.UserRepository;
+import com.hwai.backend.common.message.Message;
+import com.hwai.backend.user.controller.dto.*;
+import com.hwai.backend.user.domian.User;
+import com.hwai.backend.user.domian.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

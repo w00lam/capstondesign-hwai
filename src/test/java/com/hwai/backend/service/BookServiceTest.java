@@ -1,13 +1,13 @@
 package com.hwai.backend.service;
 
-import com.hwai.backend.controller.book.dto.LendRequestDto;
-import com.hwai.backend.domain.book.Book;
-import com.hwai.backend.domain.book.BookRepository;
-import com.hwai.backend.domain.message.Message;
-import com.hwai.backend.domain.user.User;
-import com.hwai.backend.domain.user.UserRepository;
-import com.hwai.backend.service.book.BookService;
-import com.hwai.backend.service.user.UserService;
+import com.hwai.backend.book.controller.dto.LendRequestDto;
+import com.hwai.backend.book.domain.Book;
+import com.hwai.backend.book.domain.BookRepository;
+import com.hwai.backend.common.message.Message;
+import com.hwai.backend.user.domian.User;
+import com.hwai.backend.user.domian.UserRepository;
+import com.hwai.backend.book.service.BookService;
+import com.hwai.backend.user.service.UserService;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
