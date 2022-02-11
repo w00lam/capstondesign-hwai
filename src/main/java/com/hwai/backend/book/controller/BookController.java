@@ -17,7 +17,7 @@ public class BookController {
 
     private final BookService bookService;
 
-    @PostMapping
+    @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Message save(@RequestBody BookSaveRequestDto bookSaveRequestDto) {
         Message message = bookService.save(bookSaveRequestDto);
@@ -25,7 +25,7 @@ public class BookController {
         return message;
     }
 
-    @PutMapping("/lend")
+    @PatchMapping("/lend")
     @ResponseStatus(HttpStatus.OK)
     public void lend(@RequestBody LendRequestDto lendRequestDto) {
         Message message = bookService.lend(lendRequestDto);
