@@ -1,5 +1,6 @@
 package com.hwai.backend.book.controller;
 
+import com.hwai.backend.book.controller.dto.BookSaveRequestDto;
 import com.hwai.backend.book.controller.dto.LendRequestDto;
 import com.hwai.backend.common.message.Message;
 import com.hwai.backend.book.service.BookService;
@@ -15,6 +16,14 @@ import org.springframework.web.bind.annotation.*;
 public class BookController {
 
     private final BookService bookService;
+
+    @PostMapping("save")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Message save(@RequestBody BookSaveRequestDto bookSaveRequestDto) {
+        Message message = bookService.save(bookSaveRequestDto);
+        log.info(message.getMessage());
+        return message;
+    }
 
     @PutMapping("/lend")
     @ResponseStatus(HttpStatus.OK)
