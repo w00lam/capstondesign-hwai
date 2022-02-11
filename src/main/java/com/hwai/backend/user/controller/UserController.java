@@ -57,7 +57,7 @@ public class UserController {
         return userPageResponseDto;
     }
 
-    @PutMapping("/update")
+    @PatchMapping("/update")
     @ResponseStatus(HttpStatus.OK)
     public void update(@RequestBody PwUpdateRequestDto pwUpdateRequestDto) {
         Message message = userService.updatePw(pwUpdateRequestDto);

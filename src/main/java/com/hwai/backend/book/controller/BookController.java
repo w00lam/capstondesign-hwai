@@ -25,7 +25,7 @@ public class BookController {
         return message;
     }
 
-    @PutMapping("/lend")
+    @PatchMapping("/lend")
     @ResponseStatus(HttpStatus.OK)
     public void lend(@RequestBody LendRequestDto lendRequestDto) {
         Message message = bookService.lend(lendRequestDto);
