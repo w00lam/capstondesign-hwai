@@ -1,6 +1,5 @@
 package com.hwai.backend.user.controller;
 
-import com.hwai.backend.book.controller.dto.BookSaveRequestDto;
 import com.hwai.backend.book.service.BookService;
 import com.hwai.backend.common.message.Message;
 import com.hwai.backend.user.controller.dto.*;
@@ -20,7 +19,6 @@ public class UserController {
     private static final String VIEW_MY_PAGE_SUCCESS_MESSAGE = "마이페이지 조회 성공";
 
     private final UserService userService;
-    private final BookService bookService;
 
     @PostMapping("/join")
     @ResponseStatus(HttpStatus.CREATED)
@@ -60,7 +58,7 @@ public class UserController {
         return userPageResponseDto;
     }
 
-    @PutMapping("/update")
+    @PatchMapping("/update")
     @ResponseStatus(HttpStatus.OK)
     public void update(@RequestBody PwUpdateRequestDto pwUpdateRequestDto) {
         Message message = userService.updatePw(pwUpdateRequestDto);
