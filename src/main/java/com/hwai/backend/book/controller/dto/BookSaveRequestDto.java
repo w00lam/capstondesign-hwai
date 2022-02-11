@@ -9,20 +9,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BookSaveRequestDto {
 
-    private Long id;
     private String title;
     private String genre;
 
     @Builder
-    public BookSaveRequestDto(Long id, String title, String genre) {
-        this.id = id;
+    public BookSaveRequestDto(String title, String genre) {
         this.title = title;
         this.genre = genre;
     }
 
     public Book toEntity() {
         return Book.builder()
-                .id(id)
                 .title(title)
                 .genre(genre)
                 .build();

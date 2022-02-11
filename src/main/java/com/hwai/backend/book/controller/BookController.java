@@ -17,7 +17,7 @@ public class BookController {
 
     private final BookService bookService;
 
-    @PostMapping("save")
+    @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Message save(@RequestBody BookSaveRequestDto bookSaveRequestDto) {
         Message message = bookService.save(bookSaveRequestDto);
