@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hwai.backend.dto.LendRequestDtoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-11T14:14:48" hostname="DESKTOP-0R6UP8A" time="0.0">
+  <properties/>
+  <testcase name="대출_요청" classname="com.hwai.backend.dto.LendRequestDtoTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
