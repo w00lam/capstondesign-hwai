@@ -1,4 +1,4 @@
-package com.hwai.backend.controller.book;
+package com.hwai.backend.controller;
 
 import com.hwai.backend.controller.book.dto.LendRequestDto;
 import com.hwai.backend.domain.message.Message;
@@ -20,7 +20,6 @@ public class BookController {
     @ResponseStatus(HttpStatus.OK)
     public void lend(@RequestBody LendRequestDto lendRequestDto) {
         Message message = bookService.lend(lendRequestDto);
-        System.out.printf("hi");
         log.info(message.getMessage());
     }
 }
