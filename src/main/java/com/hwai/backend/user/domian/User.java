@@ -1,6 +1,7 @@
 package com.hwai.backend.user.domian;
 
 import com.hwai.backend.book.domain.Book;
+import com.hwai.backend.user.controller.dto.PwUpdateRequestDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -49,7 +50,7 @@ public class User {
         this.admin = admin;
     }
 
-    public void updatePw(String new_pw){
-        this.pw = new_pw;
+    public void updatePw(PwUpdateRequestDto pwUpdateRequestDto){
+        this.pw = pwUpdateRequestDto.getNew_pw();
     }
 }

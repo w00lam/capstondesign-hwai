@@ -15,6 +15,7 @@ repositories {
 
 dependencies {
     implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    implementation 'junit:junit:4.13.1'
     annotationProcessor('org.projectlombok:lombok')
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
