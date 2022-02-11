@@ -11,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 public class LendRequestDto {
     private Long user_id;
-    private List<Long> book_id;
+    private List<Long> book_id = new ArrayList<>();
 
     @Builder
     public LendRequestDto(Long user_id, List<Long> book_id) {
