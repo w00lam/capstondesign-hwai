@@ -20,6 +20,7 @@ public class BookController {
     @ResponseStatus(HttpStatus.OK)
     public void lend(@RequestBody LendRequestDto lendRequestDto) {
         Message message = bookService.lend(lendRequestDto);
+        System.out.printf("hi");
         log.info(message.getMessage());
     }
 }
