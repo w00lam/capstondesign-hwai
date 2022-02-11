@@ -16,6 +16,8 @@ public class LendRequestDto {
     @Builder
     public LendRequestDto(Long user_id, List<Long> book_id) {
         this.user_id = user_id;
-        this.book_id = book_id;
+        for(Long id : book_id){
+            this.book_id.add(id);
+        }
     }
 }
