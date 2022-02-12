@@ -11,17 +11,20 @@ public class BookSaveRequestDto {
 
     private String title;
     private String genre;
+    private String origin;
 
     @Builder
-    public BookSaveRequestDto(String title, String genre) {
+    public BookSaveRequestDto(String title, String genre, String origin) {
         this.title = title;
         this.genre = genre;
+        this.origin = origin;
     }
 
     public Book toEntity() {
         return Book.builder()
                 .title(title)
                 .genre(genre)
+                .origin(origin)
                 .build();
     }
 }
