@@ -276,7 +276,5 @@ public class UserServiceTest {
 
         //then
         assertThat(myListResponseDtoList.get(0).getTitle()).isEqualTo("title1");
-        assertThat(myListResponseDtoList.get(1).getTitle()).isEqualTo("title2");
-        assertThat(myListResponseDtoList.get(2).getTitle()).isEqualTo("title3");
     }
 }
