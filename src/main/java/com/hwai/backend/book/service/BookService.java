@@ -33,15 +33,11 @@ public class BookService {
 
     @Transactional
     public Message lend(LendRequestDto lendRequestDto) {
-        for(Long id : lendRequestDto.getBook_id()){
-            bookRepository.findById(id).orElseThrow(() -> new NotFoundException(BOOK_NOT_FOUND_MESSAGE));
-        }
         User findUser = userRepository.findById(lendRequestDto.getUser_id())
                 .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_MESSAGE));
-        for(Long id : lendRequestDto.getBook_id()){
-            Book findBook = findBookById(id);
-            findBook.lend(findUser);
-        }
+        Book findBook = bookRepository.findById(lendRequestDto.getBookList().stream().iterator().next().getId())
+                .orElseThrow(() -> new NotFoundException(BOOK_NOT_FOUND_MESSAGE));
+        findBook.lend(findUser);
         return new Message(LEND_BOOK_MESSAGE);
     }
 

@@ -99,6 +99,7 @@ public class UserServiceTest {
                 .admin(false)
                 .build();
         userRepository.save(user);
+
         JoinRequestDto joinRequestDto = JoinRequestDto.builder()
                 .email("test@naver.com")
                 .name("tester")
@@ -126,6 +127,7 @@ public class UserServiceTest {
                 .admin(false)
                 .build();
         userService.join(joinRequestDto);
+
         User findUser = userRepository.findByEmail("test@naver.com")
                 .orElseThrow(() -> new IllegalArgumentException("로그인 실패"));
         LoginRequestDto loginRequestDto = new LoginRequestDto("test@naver.com", "1234");
@@ -171,6 +173,7 @@ public class UserServiceTest {
                 .build();
         LoginRequestDto loginRequestDto = new LoginRequestDto("test@naver.com", "12345");
         userRepository.save(user);
+
         //when
         //then
         assertThatThrownBy(() -> userService.login(loginRequestDto))
@@ -260,12 +263,12 @@ public class UserServiceTest {
         save.getBooks().add(add2);
         save.getBooks().add(add3);
 
-        List<Long> list = new ArrayList<>();
-        list.add(add1.getId());
-        list.add(add2.getId());
-        list.add(add3.getId());
+        List<Book> bookList = new ArrayList<>();
+        bookList.add(add1);
+        bookList.add(add2);
+        bookList.add(add3);
 
-        LendRequestDto lendRequestDto = new LendRequestDto(save.getId(), list);
+        LendRequestDto lendRequestDto = new LendRequestDto(save.getId(), bookList);
         Message message = bookService.lend(lendRequestDto);
 
         //when

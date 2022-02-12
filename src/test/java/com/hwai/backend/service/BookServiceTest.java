@@ -74,13 +74,13 @@ public class BookServiceTest {
         Book add2 = bookRepository.save(book2);
         Book add3 = bookRepository.save(book3);
 
-        List<Long> list = new ArrayList<>();
-        list.add(add1.getId());
-        list.add(add2.getId());
-        list.add(add3.getId());
+        List<Book> bookList = new ArrayList<>();
+        bookList.add(add1);
+        bookList.add(add2);
+        bookList.add(add3);
 
         //when
-        LendRequestDto lendRequestDto = new LendRequestDto(user.getId(), list);
+        LendRequestDto lendRequestDto = new LendRequestDto(user.getId(), bookList);
         Message message = bookService.lend(lendRequestDto);
 
         //then
