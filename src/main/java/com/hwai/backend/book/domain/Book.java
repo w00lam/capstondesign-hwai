@@ -25,6 +25,9 @@ public class Book {
 
     private LocalDateTime due_date;
 
+    @Column(nullable = false)
+    private String origin;
+
     private String current;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -32,10 +35,11 @@ public class Book {
     private User user;
 
     @Builder
-    public Book(Long id, String title, String genre) {
+    public Book(Long id, String title, String genre, String origin) {
         this.id = id;
         this.title = title;
         this.genre = genre;
+        this.origin = origin;
     }
 
     public void lend(User user) {

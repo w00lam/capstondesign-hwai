@@ -1,6 +1,5 @@
 package com.hwai.backend.user.controller;
 
-import com.hwai.backend.book.service.BookService;
 import com.hwai.backend.common.message.Message;
 import com.hwai.backend.user.controller.dto.*;
 import com.hwai.backend.user.service.UserService;
@@ -8,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -17,6 +18,7 @@ public class UserController {
 
     private static final String LOGIN_SUCCESS_MESSAGE = "로그인 성공";
     private static final String VIEW_MY_PAGE_SUCCESS_MESSAGE = "마이페이지 조회 성공";
+    private static final String VIEW_MY_BOOK_LIST_SUCCESS_MESSAGE = "대출중인 책 리스트 조회 성공";
 
     private final UserService userService;
 
@@ -63,5 +65,13 @@ public class UserController {
     public void update(@RequestBody PwUpdateRequestDto pwUpdateRequestDto) {
         Message message = userService.updatePw(pwUpdateRequestDto);
         log.info(message.getMessage());
+    }
+
+    @GetMapping("/list/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<MyListResponseDto> viewMyList(@PathVariable("id") Long id) {
+        List<MyListResponseDto> myListResponseDtoList = userService.viewMyList(id);
+        log.info(VIEW_MY_BOOK_LIST_SUCCESS_MESSAGE);
+        return myListResponseDtoList;
     }
 }

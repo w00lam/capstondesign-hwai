@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -54,26 +53,31 @@ public class BookServiceTest {
                 .pw("1234")
                 .admin(false)
                 .build();
-        userRepository.save(user);
+        User save = userRepository.save(user);
+
         Book book1 = Book.builder()
-                .title("title")
-                .genre("genre")
+                .title("title1")
+                .genre("genre1")
+                .origin("1")
                 .build();
-        bookRepository.save(book1);
         Book book2 = Book.builder()
-                .title("title")
-                .genre("genre")
+                .title("title2")
+                .genre("genre2")
+                .origin("2")
                 .build();
-        bookRepository.save(book2);
         Book book3 = Book.builder()
-                .title("title")
-                .genre("genre")
+                .title("title3")
+                .genre("genre3")
+                .origin("3")
                 .build();
-        bookRepository.save(book3);
+        Book add1 = bookRepository.save(book1);
+        Book add2 = bookRepository.save(book2);
+        Book add3 = bookRepository.save(book3);
+
         List<Long> list = new ArrayList<>();
-        list.add(book1.getId());
-        list.add(book2.getId());
-        list.add(book3.getId());
+        list.add(add1.getId());
+        list.add(add2.getId());
+        list.add(add3.getId());
 
         //when
         LendRequestDto lendRequestDto = new LendRequestDto(user.getId(), list);

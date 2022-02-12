@@ -1,5 +1,6 @@
 package com.hwai.backend.user.service;
 
+import com.hwai.backend.book.domain.Book;
 import com.hwai.backend.common.exception.BadRequestException;
 import com.hwai.backend.common.exception.NotFoundException;
 import com.hwai.backend.common.message.Message;
@@ -9,6 +10,9 @@ import com.hwai.backend.user.domian.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -46,9 +50,8 @@ public class UserService {
         User findUser = userRepository.findByEmail(loginRequestDto.getEmail())
                 .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_MESSAGE));
         validatePasswordForEqual(loginRequestDto, findUser.getPw());
-        LoginResponseDto loginResponseDto = new LoginResponseDto(findUser.getId(), findUser.getName(), findUser.isAdmin(),
+        return new LoginResponseDto(findUser.getId(), findUser.getName(), findUser.isAdmin(),
                 123456, new Message(LOGIN_SUCCESS_MESSAGE));
-        return loginResponseDto;
     }
 
     @Transactional(readOnly = true)
@@ -61,8 +64,7 @@ public class UserService {
     @Transactional(readOnly = true)
     public UserPageResponseDto page(Long id) {
         User user = findUserById(id);
-        UserPageResponseDto userPageResponseDto = new UserPageResponseDto(user, new Message(USER_INFO_MESSAGE));
-        return userPageResponseDto;
+        return new UserPageResponseDto(user, new Message(USER_INFO_MESSAGE));
     }
 
     @Transactional
@@ -72,6 +74,15 @@ public class UserService {
         validatePasswordForNotEqual(pwUpdateRequestDto, user.getPw());
         user.updatePw(pwUpdateRequestDto);
         return new Message(UPDATE_PW_MESSAGE);
+    }
+
+    @Transactional
+    public List<MyListResponseDto> viewMyList(Long id) {
+        User user = findUserById(id);
+        List<Book> books = user.getBooks();
+        return books.stream()
+                .map(MyListResponseDto::new)
+                .collect(Collectors.toList());
     }
 
     private void checkDuplicateEmail(String email) {

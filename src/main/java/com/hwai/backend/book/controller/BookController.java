@@ -26,7 +26,7 @@ public class BookController {
     }
 
     @PatchMapping("/lend")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void lend(@RequestBody LendRequestDto lendRequestDto) {
         Message message = bookService.lend(lendRequestDto);
         log.info(message.getMessage());

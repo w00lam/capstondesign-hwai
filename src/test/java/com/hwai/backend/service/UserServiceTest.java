@@ -1,5 +1,9 @@
 package com.hwai.backend.service;
 
+import com.hwai.backend.book.controller.dto.LendRequestDto;
+import com.hwai.backend.book.domain.Book;
+import com.hwai.backend.book.domain.BookRepository;
+import com.hwai.backend.book.service.BookService;
 import com.hwai.backend.common.exception.BadRequestException;
 import com.hwai.backend.common.exception.NotEqualsException;
 import com.hwai.backend.common.exception.NotFoundException;
@@ -15,6 +19,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -26,10 +33,17 @@ public class UserServiceTest {
     private UserRepository userRepository;
 
     @Autowired
+    private BookRepository bookRepository;
+
+    @Autowired
     private UserService userService;
+
+    @Autowired
+    private BookService bookService;
 
     @After
     public void cleanup() {
+        bookRepository.deleteAll();
         userRepository.deleteAll();
     }
 
@@ -208,5 +222,58 @@ public class UserServiceTest {
 
         //then
         assertThat(pwUpdateRequestDto.getNew_pw()).isEqualTo(expectedPw);
+    }
+
+    @Test
+    public void 대출중인_책_리스트_조회() {
+        //given
+        User user = User.builder()
+                .email("test@naver.com")
+                .name("tester")
+                .birth("111111")
+                .tel("010-1111-2222")
+                .pw("1234")
+                .admin(false)
+                .build();
+        User save = userRepository.save(user);
+
+        Book book1 = Book.builder()
+                .title("title1")
+                .genre("genre1")
+                .origin("1")
+                .build();
+        Book book2 = Book.builder()
+                .title("title2")
+                .genre("genre2")
+                .origin("2")
+                .build();
+        Book book3 = Book.builder()
+                .title("title3")
+                .genre("genre3")
+                .origin("3")
+                .build();
+        Book add1 = bookRepository.save(book1);
+        Book add2 = bookRepository.save(book2);
+        Book add3 = bookRepository.save(book3);
+
+        save.getBooks().add(add1);
+        save.getBooks().add(add2);
+        save.getBooks().add(add3);
+
+        List<Long> list = new ArrayList<>();
+        list.add(add1.getId());
+        list.add(add2.getId());
+        list.add(add3.getId());
+
+        LendRequestDto lendRequestDto = new LendRequestDto(save.getId(), list);
+        Message message = bookService.lend(lendRequestDto);
+
+        //when
+        List<MyListResponseDto> myListResponseDtoList = userService.viewMyList(save.getId());
+
+        //then
+        assertThat(myListResponseDtoList.get(0).getTitle()).isEqualTo("title1");
+        assertThat(myListResponseDtoList.get(1).getTitle()).isEqualTo("title2");
+        assertThat(myListResponseDtoList.get(2).getTitle()).isEqualTo("title3");
     }
 }
