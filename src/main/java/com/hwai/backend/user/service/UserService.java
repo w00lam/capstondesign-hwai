@@ -29,6 +29,7 @@ public class UserService {
     private static final String USER_INFO_MESSAGE = "회원 정보 불러오기 성공";
     private static final String UPDATE_PW_MESSAGE = "비밀번호 변경 완료";
     private static final String PASSWORD_EQUAL_MESSAGE = "이전 비밀번호와 동일합니다.";
+    private static final String BOOK_LIST_IS_EMPTY = "대출중인 책이 없습니다.";
 
     @Transactional
     public Message join(JoinRequestDto joinRequestDto) {
@@ -80,6 +81,7 @@ public class UserService {
     public List<MyListResponseDto> viewMyList(Long id) {
         User user = findUserById(id);
         List<Book> books = user.getBooks();
+        checkEmpty(books);
         return books.stream()
                 .map(MyListResponseDto::new)
                 .collect(Collectors.toList());
@@ -105,6 +107,12 @@ public class UserService {
 
     private User findUserById(Long userId) {
         return userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException(USER_NOT_FOUND_MESSAGE));
+                .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_MESSAGE));
+    }
+
+    private void checkEmpty(List<Book> bookList) {
+        if (bookList.isEmpty()) {
+            throw new BadRequestException(BOOK_LIST_IS_EMPTY);
+        }
     }
 }
