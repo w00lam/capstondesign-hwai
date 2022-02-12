@@ -20,7 +20,6 @@ public class BookService {
     private final UserRepository userRepository;
 
     private static final String BOOK_SAVE_MESSAGE = "책 저장 성공";
-    private static final String BOOK_NOT_FOUND_MESSAGE = "책이 존재하지 않습니다.";
     private static final String LEND_BOOK_MESSAGE = "책 대출 성공";
     private static final String USER_NOT_FOUND_MESSAGE = "해당 유저가 존재하지 않습니다.";
 
@@ -36,13 +35,9 @@ public class BookService {
         User findUser = userRepository.findById(lendRequestDto.getUser_id())
                 .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_MESSAGE));
         Book findBook = bookRepository.findById(lendRequestDto.getBookList().stream().iterator().next().getId())
-                .orElseThrow(() -> new NotFoundException(BOOK_NOT_FOUND_MESSAGE));
+                .orElseThrow(() -> new IllegalArgumentException("해당 책이 없습니다. id="
+                        + lendRequestDto.getBookList().stream().iterator().next().getId()));
         findBook.lend(findUser);
         return new Message(LEND_BOOK_MESSAGE);
-    }
-
-    private Book findBookById(Long bookId) {
-        return bookRepository.findById(bookId)
-                .orElseThrow(() -> new BadRequestException(BOOK_NOT_FOUND_MESSAGE));
     }
 }
