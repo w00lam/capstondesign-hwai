@@ -5,13 +5,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @NoArgsConstructor
 public class LendRequestDto {
     private Long user_id;
-    private List<Book> bookList;
+    private List<Book> bookList = new ArrayList<>();
 
     @Builder
     public LendRequestDto(Long user_id, List<Book> bookList) {

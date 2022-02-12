@@ -80,7 +80,7 @@ public class BookServiceTest {
         bookList.add(add3);
 
         //when
-        LendRequestDto lendRequestDto = new LendRequestDto(user.getId(), bookList);
+        LendRequestDto lendRequestDto = new LendRequestDto(save.getId(), bookList);
         Message message = bookService.lend(lendRequestDto);
 
         //then

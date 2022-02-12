@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.042s</div>
+<div class="counter">0.392s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,7 +79,7 @@
 </thead>
 <tr>
 <td class="success">책_대출_성공</td>
-<td class="success">0.042s</td>
+<td class="success">0.392s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -87,12 +87,30 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2022-02-12 14:57:48.672  INFO 8760 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.hwai.backend.service.BookServiceTest], using SpringBootContextLoader
-2022-02-12 14:57:48.673  INFO 8760 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.hwai.backend.service.BookServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2022-02-12 14:57:48.673  INFO 8760 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.hwai.backend.service.BookServiceTest]: BookServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2022-02-12 14:57:48.675  INFO 8760 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.hwai.backend.Application for test class com.hwai.backend.service.BookServiceTest
-2022-02-12 14:57:48.676  INFO 8760 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-2022-02-12 14:57:48.677  INFO 8760 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@49f88512, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4dd47cac, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@18bbe09c, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@11641927, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1cb9ce0c, org.springframework.test.context.transaction.TransactionalTestExecutionListener@72e6f02b, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@359e51eb, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@482db5e, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@5619ac6c, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@13bb792c, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@546d63b9, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@46a70a41, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@5dc6b435, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@157cd4b8]
+<pre>18:32:12.494 [Test worker] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.hwai.backend.service.BookServiceTest]
+18:32:12.501 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+18:32:12.509 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+18:32:12.525 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.hwai.backend.service.BookServiceTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+18:32:12.538 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.hwai.backend.service.BookServiceTest], using SpringBootContextLoader
+18:32:12.542 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.hwai.backend.service.BookServiceTest]: class path resource [com/hwai/backend/service/BookServiceTest-context.xml] does not exist
+18:32:12.542 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.hwai.backend.service.BookServiceTest]: class path resource [com/hwai/backend/service/BookServiceTestContext.groovy] does not exist
+18:32:12.543 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.hwai.backend.service.BookServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+18:32:12.543 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.hwai.backend.service.BookServiceTest]: BookServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+18:32:12.586 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.hwai.backend.service.BookServiceTest]
+18:32:12.662 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [D:\Users\Lee\Documents\git\Java\project\capstondesign-hwai-be\build\classes\java\main\com\hwai\backend\Application.class]
+18:32:12.663 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.hwai.backend.Application for test class com.hwai.backend.service.BookServiceTest
+18:32:12.769 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.hwai.backend.service.BookServiceTest]: using defaults.
+18:32:12.770 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+18:32:12.795 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2bf31557, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2e8e6b93, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@aec128b, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@206d8476, org.springframework.test.context.support.DirtiesContextTestExecutionListener@13876481, org.springframework.test.context.transaction.TransactionalTestExecutionListener@4e084791, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@249a7c91, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@68181240, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@4093d0ae, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4cab23e2, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3ba2a012, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@13803f34, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@4d489b4a, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@58e91532]
+18:32:12.798 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.hwai.backend.service.BookServiceTest]
+18:32:12.798 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.hwai.backend.service.BookServiceTest]
+18:32:12.799 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.hwai.backend.service.BookServiceTest]
+18:32:12.799 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.hwai.backend.service.BookServiceTest]
+18:32:12.803 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@64130c65 testClass = BookServiceTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@5cc3ea39 testClass = BookServiceTest, locations = '{}', classes = '{class com.hwai.backend.Application}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@447728e1, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@46ff9617, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@70494a88, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@72e3b543], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; false]], class annotated with @DirtiesContext [false] with mode [null].
+18:32:12.804 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.hwai.backend.service.BookServiceTest]
+18:32:12.804 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.hwai.backend.service.BookServiceTest]
+18:32:12.808 [Test worker] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@64130c65 testClass = BookServiceTest, testInstance = com.hwai.backend.service.BookServiceTest@6f5e1e2f, testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@5cc3ea39 testClass = BookServiceTest, locations = '{}', classes = '{class com.hwai.backend.Application}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@447728e1, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@46ff9617, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@70494a88, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@72e3b543], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; false]]].
+18:32:12.830 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -102,47 +120,44 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.1.7.RELEASE)
 
-2022-02-12 14:57:48.709  INFO 8760 --- [    Test worker] c.hwai.backend.service.BookServiceTest   : Starting BookServiceTest on DESKTOP-0R6UP8A with PID 8760 (started by Lee in D:\Users\Lee\Documents\git\Java\project\capstondesign-hwai-be)
-2022-02-12 14:57:48.715  INFO 8760 --- [    Test worker] c.hwai.backend.service.BookServiceTest   : No active profile set, falling back to default profiles: default
-2022-02-12 14:57:48.896  INFO 8760 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
-2022-02-12 14:57:48.912  INFO 8760 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15ms. Found 2 repository interfaces.
-2022-02-12 14:57:48.979  INFO 8760 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$5d1ef086] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-02-12 14:57:49.230  INFO 8760 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2022-02-12 14:57:49.257  INFO 8760 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-02-12 14:57:49.258  INFO 8760 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
-2022-02-12 14:57:49.423  INFO 8760 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-02-12 14:57:49.423  INFO 8760 --- [    Test worker] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 706 ms
-2022-02-12 14:57:49.603  INFO 8760 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2022-02-12 14:57:49.604  INFO 8760 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2022-02-12 14:57:49.623  INFO 8760 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+2022-02-12 18:32:13.096  INFO 2092 --- [    Test worker] c.hwai.backend.service.BookServiceTest   : Starting BookServiceTest on DESKTOP-0R6UP8A with PID 2092 (started by Lee in D:\Users\Lee\Documents\git\Java\project\capstondesign-hwai-be)
+2022-02-12 18:32:13.097  INFO 2092 --- [    Test worker] c.hwai.backend.service.BookServiceTest   : No active profile set, falling back to default profiles: default
+2022-02-12 18:32:13.923  INFO 2092 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-02-12 18:32:14.024  INFO 2092 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 88ms. Found 2 repository interfaces.
+2022-02-12 18:32:14.433  INFO 2092 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$671235aa] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-02-12 18:32:14.952  INFO 2092 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-02-12 18:32:14.995  INFO 2092 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-02-12 18:32:14.996  INFO 2092 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2022-02-12 18:32:15.208  INFO 2092 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-02-12 18:32:15.208  INFO 2092 --- [    Test worker] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2093 ms
+2022-02-12 18:32:15.498  INFO 2092 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-12 18:32:15.687  INFO 2092 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-02-12 18:32:15.801  INFO 2092 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-2022-02-12 14:57:49.629  INFO 8760 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-Hibernate: alter table book drop foreign key FK1wxwagv6cm3vjrxqhmv884hir
-Hibernate: drop table if exists book
-Hibernate: drop table if exists user
+2022-02-12 18:32:15.917  INFO 2092 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.10.Final}
+2022-02-12 18:32:15.919  INFO 2092 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2022-02-12 18:32:16.167  INFO 2092 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2022-02-12 18:32:16.370  INFO 2092 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 Hibernate: create table book (id bigint not null auto_increment, current varchar(255), due_date datetime, genre varchar(255) not null, origin varchar(255) not null, title varchar(255) not null, user_id bigint, primary key (id)) engine=InnoDB
 Hibernate: create table user (id bigint not null auto_increment, admin bit not null, birth varchar(255) not null, email varchar(255) not null, name varchar(255) not null, pw varchar(255) not null, tel varchar(255) not null, primary key (id)) engine=InnoDB
 Hibernate: alter table book add constraint FK1wxwagv6cm3vjrxqhmv884hir foreign key (user_id) references user (id)
-2022-02-12 14:57:49.657  INFO 8760 --- [    Test worker] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@6ab34e34'
-2022-02-12 14:57:49.657  INFO 8760 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-02-12 14:57:49.905  INFO 8760 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2022-02-12 14:57:49.917  WARN 8760 --- [    Test worker] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-02-12 14:57:50.258  INFO 8760 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7564 (http) with context path ''
-2022-02-12 14:57:50.260  INFO 8760 --- [    Test worker] c.hwai.backend.service.BookServiceTest   : Started BookServiceTest in 1.58 seconds (JVM running for 7.935)
+2022-02-12 18:32:17.310  INFO 2092 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-12 18:32:18.471  INFO 2092 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-12 18:32:18.537  WARN 2092 --- [    Test worker] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-12 18:32:18.985  INFO 2092 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 13068 (http) with context path ''
+2022-02-12 18:32:18.987  INFO 2092 --- [    Test worker] c.hwai.backend.service.BookServiceTest   : Started BookServiceTest in 6.156 seconds (JVM running for 7.445)
 Hibernate: insert into user (admin, birth, email, name, pw, tel) values (?, ?, ?, ?, ?, ?)
 Hibernate: insert into book (current, due_date, genre, origin, title, user_id) values (?, ?, ?, ?, ?, ?)
 Hibernate: insert into book (current, due_date, genre, origin, title, user_id) values (?, ?, ?, ?, ?, ?)
 Hibernate: insert into book (current, due_date, genre, origin, title, user_id) values (?, ?, ?, ?, ?, ?)
 Hibernate: select user0_.id as id1_1_0_, user0_.admin as admin2_1_0_, user0_.birth as birth3_1_0_, user0_.email as email4_1_0_, user0_.name as name5_1_0_, user0_.pw as pw6_1_0_, user0_.tel as tel7_1_0_ from user user0_ where user0_.id=?
 Hibernate: select book0_.id as id1_0_0_, book0_.current as current2_0_0_, book0_.due_date as due_date3_0_0_, book0_.genre as genre4_0_0_, book0_.origin as origin5_0_0_, book0_.title as title6_0_0_, book0_.user_id as user_id7_0_0_ from book book0_ where book0_.id=?
-Hibernate: update book set current=?, due_date=?, genre=?, origin=?, title=?, user_id=? where id=?
-2022-02-12 14:57:50.294  INFO 8760 --- [    Test worker] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2022-02-12 18:32:19.250  INFO 2092 --- [    Test worker] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
 Hibernate: select user0_.id as id1_1_, user0_.admin as admin2_1_, user0_.birth as birth3_1_, user0_.email as email4_1_, user0_.name as name5_1_, user0_.pw as pw6_1_, user0_.tel as tel7_1_ from user user0_
-Hibernate: select books0_.user_id as user_id7_0_0_, books0_.id as id1_0_0_, books0_.id as id1_0_1_, books0_.current as current2_0_1_, books0_.due_date as due_date3_0_1_, books0_.genre as genre4_0_1_, books0_.origin as origin5_0_1_, books0_.title as title6_0_1_, books0_.user_id as user_id7_0_1_ from book books0_ where books0_.user_id=?
-Hibernate: delete from book where id=?
 Hibernate: delete from user where id=?
 Hibernate: select book0_.id as id1_0_, book0_.current as current2_0_, book0_.due_date as due_date3_0_, book0_.genre as genre4_0_, book0_.origin as origin5_0_, book0_.title as title6_0_, book0_.user_id as user_id7_0_ from book book0_
+Hibernate: delete from book where id=?
 Hibernate: delete from book where id=?
 Hibernate: delete from book where id=?
 </pre>
@@ -156,7 +171,7 @@ Hibernate: delete from book where id=?
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.1</a> at 2022. 2. 12 오후 2:57:50</p>
+<a href="http://www.gradle.org">Gradle 7.1</a> at 2022. 2. 12 오후 6:32:21</p>
 </div>
 </div>
 </body>

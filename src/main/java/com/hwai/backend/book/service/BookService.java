@@ -1,6 +1,7 @@
 package com.hwai.backend.book.service;
 
 import com.hwai.backend.book.controller.dto.BookSaveRequestDto;
+import com.hwai.backend.book.controller.dto.ChecklistResponseDto;
 import com.hwai.backend.common.exception.BadRequestException;
 import com.hwai.backend.common.exception.NotFoundException;
 import com.hwai.backend.book.controller.dto.LendRequestDto;
@@ -12,6 +13,9 @@ import com.hwai.backend.user.domian.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -34,10 +38,19 @@ public class BookService {
     public Message lend(LendRequestDto lendRequestDto) {
         User findUser = userRepository.findById(lendRequestDto.getUser_id())
                 .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_MESSAGE));
-        Book findBook = bookRepository.findById(lendRequestDto.getBookList().stream().iterator().next().getId())
+        bookRepository.findById(lendRequestDto.getBookList().stream().iterator().next().getId())
                 .orElseThrow(() -> new IllegalArgumentException("해당 책이 없습니다. id="
                         + lendRequestDto.getBookList().stream().iterator().next().getId()));
-        findBook.lend(findUser);
+        for(Book findBook : lendRequestDto.getBookList()){
+            findBook.lend(findUser);
+        }
         return new Message(LEND_BOOK_MESSAGE);
+    }
+
+    @Transactional(readOnly = true)
+    public List<ChecklistResponseDto> findCheck() {
+        return bookRepository.findCheck().stream()
+                .map(ChecklistResponseDto::new)
+                .collect(Collectors.toList());
     }
 }

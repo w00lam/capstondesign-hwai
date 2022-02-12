@@ -77,7 +77,7 @@ public class UserService {
         return new Message(UPDATE_PW_MESSAGE);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<MyListResponseDto> viewMyList(Long id) {
         User user = findUserById(id);
         List<Book> books = user.getBooks();
