@@ -38,6 +38,7 @@ public class User {
     private boolean admin;
 
     @OneToMany(mappedBy = "user")
+    @Column
     private List<Book> books = new ArrayList<>();
 
     @Builder

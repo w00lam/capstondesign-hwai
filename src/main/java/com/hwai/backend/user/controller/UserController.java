@@ -15,7 +15,6 @@ import java.util.List;
 @RequestMapping("/api/v1/users")
 @RestController
 public class UserController {
-
     private static final String LOGIN_SUCCESS_MESSAGE = "로그인 성공";
     private static final String VIEW_MY_PAGE_SUCCESS_MESSAGE = "마이페이지 조회 성공";
     private static final String VIEW_MY_BOOK_LIST_SUCCESS_MESSAGE = "대출중인 책 리스트 조회 성공";

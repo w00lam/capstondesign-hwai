@@ -12,14 +12,14 @@ import java.time.LocalDateTime;
 public class ChecklistResponseDto {
     private String title;
     private LocalDateTime due_date;
-    private String origin;
+    private String shelf;
     private String current;
 
     @Builder
     public ChecklistResponseDto(Book book) {
         this.title = book.getTitle();
         this.due_date = book.getDue_date();
-        this.origin = book.getOrigin();
+        this.shelf = book.getShelf();
         this.current = book.getCurrent();
     }
 }

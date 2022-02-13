@@ -3,6 +3,9 @@ package com.hwai.backend.service;
 import com.hwai.backend.book.controller.dto.LendRequestDto;
 import com.hwai.backend.book.domain.Book;
 import com.hwai.backend.book.domain.BookRepository;
+import com.hwai.backend.category.domain.Category;
+import com.hwai.backend.category.domain.CategoryRepository;
+import com.hwai.backend.category.service.CategoryService;
 import com.hwai.backend.common.message.Message;
 import com.hwai.backend.user.domian.User;
 import com.hwai.backend.user.domian.UserRepository;
@@ -31,15 +34,22 @@ public class BookServiceTest {
     private BookRepository bookRepository;
 
     @Autowired
+    private CategoryRepository categoryRepository;
+
+    @Autowired
     private UserService userService;
 
     @Autowired
     private BookService bookService;
 
+    @Autowired
+    private CategoryService categoryService;
+
     @After
-    public void tearDown() throws Exception {
+    public void cleanUp() {
         userRepository.deleteAll();
         bookRepository.deleteAll();
+        categoryRepository.deleteAll();
     }
 
     @Test
@@ -53,22 +63,25 @@ public class BookServiceTest {
                 .pw("1234")
                 .admin(false)
                 .build();
-        User save = userRepository.save(user);
+        User member = userRepository.save(user);
+
+        Category category = Category.builder()
+                .genre("genre")
+                .shelf("1")
+                .build();
+        Category save = categoryRepository.save(category);
 
         Book book1 = Book.builder()
                 .title("title1")
-                .genre("genre1")
-                .origin("1")
+                .category(save)
                 .build();
         Book book2 = Book.builder()
                 .title("title2")
-                .genre("genre2")
-                .origin("2")
+                .category(save)
                 .build();
         Book book3 = Book.builder()
                 .title("title3")
-                .genre("genre3")
-                .origin("3")
+                .category(save)
                 .build();
         Book add1 = bookRepository.save(book1);
         Book add2 = bookRepository.save(book2);
@@ -80,7 +93,7 @@ public class BookServiceTest {
         bookList.add(add3);
 
         //when
-        LendRequestDto lendRequestDto = new LendRequestDto(save.getId(), bookList);
+        LendRequestDto lendRequestDto = new LendRequestDto(member.getId(), bookList);
         Message message = bookService.lend(lendRequestDto);
 
         //then

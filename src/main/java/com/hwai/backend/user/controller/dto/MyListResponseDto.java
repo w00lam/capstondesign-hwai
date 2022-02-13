@@ -11,11 +11,11 @@ import java.time.LocalDateTime;
 public class MyListResponseDto {
     private String title;
     private LocalDateTime due_date;
-    private String origin;
+    private String shelf;
 
     public MyListResponseDto(Book book) {
         this.title = book.getTitle();
         this.due_date = book.getDue_date();
-        this.origin = book.getOrigin();
+        this.shelf = book.getShelf();
     }
 }

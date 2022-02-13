@@ -1,5 +1,6 @@
 package com.hwai.backend.book.domain;
 
+import com.hwai.backend.category.domain.Category;
 import com.hwai.backend.user.domian.User;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,14 +21,13 @@ public class Book {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
-    private String genre;
-
+    @Column
     private LocalDateTime due_date;
 
-    @Column(nullable = false)
-    private String origin;
+    @Column
+    private String shelf;
 
+    @Column
     private String current;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -35,11 +35,10 @@ public class Book {
     private User user;
 
     @Builder
-    public Book(Long id, String title, String genre, String origin) {
+    public Book(Long id, String title, Category category) {
         this.id = id;
         this.title = title;
-        this.genre = genre;
-        this.origin = origin;
+        this.shelf = category.getShelf();
     }
 
     public void lend(User user) {

@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.171s</div>
+<div class="counter">0.125s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,27 +79,27 @@
 </thead>
 <tr>
 <td class="success">로그인_비밀번호_불일치</td>
-<td class="success">0.027s</td>
+<td class="success">0.014s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">로그인_성공</td>
-<td class="success">0.073s</td>
+<td class="success">0.050s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">로그인_이메일_불일치</td>
-<td class="success">0.008s</td>
+<td class="success">0.012s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">비밀번호_변경_성공</td>
-<td class="success">0.009s</td>
+<td class="success">0.006s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">페이지_불러오기</td>
-<td class="success">0.017s</td>
+<td class="success">0.009s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -109,12 +109,12 @@
 </tr>
 <tr>
 <td class="success">회원중복</td>
-<td class="success">0.008s</td>
+<td class="success">0.012s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">회원탈퇴_성공</td>
-<td class="success">0.023s</td>
+<td class="success">0.016s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -122,12 +122,12 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2022-02-12 18:32:19.391  INFO 2092 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.hwai.backend.service.UserServiceTest], using SpringBootContextLoader
-2022-02-12 18:32:19.394  INFO 2092 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.hwai.backend.service.UserServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2022-02-12 18:32:19.394  INFO 2092 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.hwai.backend.service.UserServiceTest]: UserServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2022-02-12 18:32:19.398  INFO 2092 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.hwai.backend.Application for test class com.hwai.backend.service.UserServiceTest
-2022-02-12 18:32:19.399  INFO 2092 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-2022-02-12 18:32:19.400  INFO 2092 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@20c96b1, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1fc1e8c8, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2ce559c, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1cbbc07, org.springframework.test.context.support.DirtiesContextTestExecutionListener@67940b91, org.springframework.test.context.transaction.TransactionalTestExecutionListener@77832803, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@711e1da, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@5be64ebb, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@1ce91ed5, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@72c4ee7b, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@7a53dec8, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@1329d4af, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@47626fa9, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@1200f608]
+<pre>2022-02-13 18:00:21.417  INFO 20268 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.hwai.backend.service.UserServiceTest], using SpringBootContextLoader
+2022-02-13 18:00:21.418  INFO 20268 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.hwai.backend.service.UserServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-02-13 18:00:21.418  INFO 20268 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.hwai.backend.service.UserServiceTest]: UserServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2022-02-13 18:00:21.420  INFO 20268 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.hwai.backend.Application for test class com.hwai.backend.service.UserServiceTest
+2022-02-13 18:00:21.421  INFO 20268 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2022-02-13 18:00:21.422  INFO 20268 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2fe239fb, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@b371290, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2ed89117, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@d84cfdd, org.springframework.test.context.support.DirtiesContextTestExecutionListener@33971277, org.springframework.test.context.transaction.TransactionalTestExecutionListener@73507, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6a3d5c39, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@416c9c84, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@4a633a74, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@73759132, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@73a9c7f1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5604edbc, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@5e7dd92, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5a44301d]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -137,60 +137,52 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.1.7.RELEASE)
 
-2022-02-12 18:32:19.435  INFO 2092 --- [    Test worker] c.hwai.backend.service.UserServiceTest   : Starting UserServiceTest on DESKTOP-0R6UP8A with PID 2092 (started by Lee in D:\Users\Lee\Documents\git\Java\project\capstondesign-hwai-be)
-2022-02-12 18:32:19.436  INFO 2092 --- [    Test worker] c.hwai.backend.service.UserServiceTest   : No active profile set, falling back to default profiles: default
-2022-02-12 18:32:19.663  INFO 2092 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
-2022-02-12 18:32:19.682  INFO 2092 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18ms. Found 2 repository interfaces.
-2022-02-12 18:32:19.767  INFO 2092 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$671235aa] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-02-12 18:32:19.875  INFO 2092 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2022-02-12 18:32:19.876  INFO 2092 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2022-02-12 18:32:19.900  INFO 2092 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+2022-02-13 18:00:21.471  INFO 20268 --- [    Test worker] c.hwai.backend.service.UserServiceTest   : Starting UserServiceTest on DESKTOP-0R6UP8A with PID 20268 (started by Lee in D:\Users\Lee\Documents\git\Java\project\capstondesign-hwai-be)
+2022-02-13 18:00:21.473  INFO 20268 --- [    Test worker] c.hwai.backend.service.UserServiceTest   : No active profile set, falling back to default profiles: default
+2022-02-13 18:00:21.793  INFO 20268 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-02-13 18:00:21.816  INFO 20268 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22ms. Found 3 repository interfaces.
+2022-02-13 18:00:21.906  INFO 20268 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$785a7d2d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-02-13 18:00:21.973  INFO 20268 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2022-02-13 18:00:21.975  INFO 20268 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2022-02-13 18:00:21.996  INFO 20268 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-2022-02-12 18:32:19.910  INFO 2092 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-2022-02-12 18:32:19.958  INFO 2092 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-02-12 18:32:20.413  INFO 2092 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2022-02-12 18:32:20.428  WARN 2092 --- [    Test worker] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-02-12 18:32:20.752  INFO 2092 --- [    Test worker] c.hwai.backend.service.UserServiceTest   : Started UserServiceTest in 1.347 seconds (JVM running for 9.211)
+2022-02-13 18:00:22.020  INFO 20268 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-02-13 18:00:22.087  INFO 20268 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-13 18:00:22.483  INFO 20268 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-13 18:00:22.492  WARN 20268 --- [    Test worker] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-13 18:00:22.771  INFO 20268 --- [    Test worker] c.hwai.backend.service.UserServiceTest   : Started UserServiceTest in 1.334 seconds (JVM running for 9.528)
 Hibernate: insert into user (admin, birth, email, name, pw, tel) values (?, ?, ?, ?, ?, ?)
-Hibernate: select user0_.id as id1_1_0_, user0_.admin as admin2_1_0_, user0_.birth as birth3_1_0_, user0_.email as email4_1_0_, user0_.name as name5_1_0_, user0_.pw as pw6_1_0_, user0_.tel as tel7_1_0_ from user user0_ where user0_.id=?
+Hibernate: select user0_.id as id1_2_0_, user0_.admin as admin2_2_0_, user0_.birth as birth3_2_0_, user0_.email as email4_2_0_, user0_.name as name5_2_0_, user0_.pw as pw6_2_0_, user0_.tel as tel7_2_0_ from user user0_ where user0_.id=?
 Hibernate: delete from user where id=?
-2022-02-12 18:32:20.794  INFO 2092 --- [    Test worker] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
-Hibernate: select book0_.id as id1_0_, book0_.current as current2_0_, book0_.due_date as due_date3_0_, book0_.genre as genre4_0_, book0_.origin as origin5_0_, book0_.title as title6_0_, book0_.user_id as user_id7_0_ from book book0_
-Hibernate: select user0_.id as id1_1_, user0_.admin as admin2_1_, user0_.birth as birth3_1_, user0_.email as email4_1_, user0_.name as name5_1_, user0_.pw as pw6_1_, user0_.tel as tel7_1_ from user user0_
+2022-02-13 18:00:22.796  INFO 20268 --- [    Test worker] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+Hibernate: select user0_.id as id1_2_, user0_.admin as admin2_2_, user0_.birth as birth3_2_, user0_.email as email4_2_, user0_.name as name5_2_, user0_.pw as pw6_2_, user0_.tel as tel7_2_ from user user0_
 Hibernate: select user0_.id as col_0_0_ from user user0_ where user0_.email=? limit ?
 Hibernate: insert into user (admin, birth, email, name, pw, tel) values (?, ?, ?, ?, ?, ?)
-Hibernate: select user0_.id as id1_1_, user0_.admin as admin2_1_, user0_.birth as birth3_1_, user0_.email as email4_1_, user0_.name as name5_1_, user0_.pw as pw6_1_, user0_.tel as tel7_1_ from user user0_ where user0_.email=?
-Hibernate: select user0_.id as id1_1_, user0_.admin as admin2_1_, user0_.birth as birth3_1_, user0_.email as email4_1_, user0_.name as name5_1_, user0_.pw as pw6_1_, user0_.tel as tel7_1_ from user user0_ where user0_.email=?
-Hibernate: select book0_.id as id1_0_, book0_.current as current2_0_, book0_.due_date as due_date3_0_, book0_.genre as genre4_0_, book0_.origin as origin5_0_, book0_.title as title6_0_, book0_.user_id as user_id7_0_ from book book0_
-Hibernate: select user0_.id as id1_1_, user0_.admin as admin2_1_, user0_.birth as birth3_1_, user0_.email as email4_1_, user0_.name as name5_1_, user0_.pw as pw6_1_, user0_.tel as tel7_1_ from user user0_
+Hibernate: select user0_.id as id1_2_, user0_.admin as admin2_2_, user0_.birth as birth3_2_, user0_.email as email4_2_, user0_.name as name5_2_, user0_.pw as pw6_2_, user0_.tel as tel7_2_ from user user0_ where user0_.email=?
+Hibernate: select user0_.id as id1_2_, user0_.admin as admin2_2_, user0_.birth as birth3_2_, user0_.email as email4_2_, user0_.name as name5_2_, user0_.pw as pw6_2_, user0_.tel as tel7_2_ from user user0_ where user0_.email=?
+Hibernate: select user0_.id as id1_2_, user0_.admin as admin2_2_, user0_.birth as birth3_2_, user0_.email as email4_2_, user0_.name as name5_2_, user0_.pw as pw6_2_, user0_.tel as tel7_2_ from user user0_
 Hibernate: delete from user where id=?
-Hibernate: select book0_.id as id1_0_, book0_.current as current2_0_, book0_.due_date as due_date3_0_, book0_.genre as genre4_0_, book0_.origin as origin5_0_, book0_.title as title6_0_, book0_.user_id as user_id7_0_ from book book0_
-Hibernate: select user0_.id as id1_1_, user0_.admin as admin2_1_, user0_.birth as birth3_1_, user0_.email as email4_1_, user0_.name as name5_1_, user0_.pw as pw6_1_, user0_.tel as tel7_1_ from user user0_
+Hibernate: select user0_.id as id1_2_, user0_.admin as admin2_2_, user0_.birth as birth3_2_, user0_.email as email4_2_, user0_.name as name5_2_, user0_.pw as pw6_2_, user0_.tel as tel7_2_ from user user0_
 Hibernate: insert into user (admin, birth, email, name, pw, tel) values (?, ?, ?, ?, ?, ?)
-Hibernate: select user0_.id as id1_1_0_, user0_.admin as admin2_1_0_, user0_.birth as birth3_1_0_, user0_.email as email4_1_0_, user0_.name as name5_1_0_, user0_.pw as pw6_1_0_, user0_.tel as tel7_1_0_ from user user0_ where user0_.id=?
-Hibernate: select book0_.id as id1_0_, book0_.current as current2_0_, book0_.due_date as due_date3_0_, book0_.genre as genre4_0_, book0_.origin as origin5_0_, book0_.title as title6_0_, book0_.user_id as user_id7_0_ from book book0_
-Hibernate: select user0_.id as id1_1_, user0_.admin as admin2_1_, user0_.birth as birth3_1_, user0_.email as email4_1_, user0_.name as name5_1_, user0_.pw as pw6_1_, user0_.tel as tel7_1_ from user user0_
+Hibernate: select user0_.id as id1_2_0_, user0_.admin as admin2_2_0_, user0_.birth as birth3_2_0_, user0_.email as email4_2_0_, user0_.name as name5_2_0_, user0_.pw as pw6_2_0_, user0_.tel as tel7_2_0_ from user user0_ where user0_.id=?
+Hibernate: select user0_.id as id1_2_, user0_.admin as admin2_2_, user0_.birth as birth3_2_, user0_.email as email4_2_, user0_.name as name5_2_, user0_.pw as pw6_2_, user0_.tel as tel7_2_ from user user0_
 Hibernate: delete from user where id=?
 Hibernate: insert into user (admin, birth, email, name, pw, tel) values (?, ?, ?, ?, ?, ?)
-Hibernate: select user0_.id as id1_1_, user0_.admin as admin2_1_, user0_.birth as birth3_1_, user0_.email as email4_1_, user0_.name as name5_1_, user0_.pw as pw6_1_, user0_.tel as tel7_1_ from user user0_ where user0_.email=?
-Hibernate: select book0_.id as id1_0_, book0_.current as current2_0_, book0_.due_date as due_date3_0_, book0_.genre as genre4_0_, book0_.origin as origin5_0_, book0_.title as title6_0_, book0_.user_id as user_id7_0_ from book book0_
-Hibernate: select user0_.id as id1_1_, user0_.admin as admin2_1_, user0_.birth as birth3_1_, user0_.email as email4_1_, user0_.name as name5_1_, user0_.pw as pw6_1_, user0_.tel as tel7_1_ from user user0_
+Hibernate: select user0_.id as id1_2_, user0_.admin as admin2_2_, user0_.birth as birth3_2_, user0_.email as email4_2_, user0_.name as name5_2_, user0_.pw as pw6_2_, user0_.tel as tel7_2_ from user user0_ where user0_.email=?
+Hibernate: select user0_.id as id1_2_, user0_.admin as admin2_2_, user0_.birth as birth3_2_, user0_.email as email4_2_, user0_.name as name5_2_, user0_.pw as pw6_2_, user0_.tel as tel7_2_ from user user0_
 Hibernate: delete from user where id=?
 Hibernate: insert into user (admin, birth, email, name, pw, tel) values (?, ?, ?, ?, ?, ?)
-Hibernate: select user0_.id as id1_1_, user0_.admin as admin2_1_, user0_.birth as birth3_1_, user0_.email as email4_1_, user0_.name as name5_1_, user0_.pw as pw6_1_, user0_.tel as tel7_1_ from user user0_ where user0_.email=?
-Hibernate: select book0_.id as id1_0_, book0_.current as current2_0_, book0_.due_date as due_date3_0_, book0_.genre as genre4_0_, book0_.origin as origin5_0_, book0_.title as title6_0_, book0_.user_id as user_id7_0_ from book book0_
-Hibernate: select user0_.id as id1_1_, user0_.admin as admin2_1_, user0_.birth as birth3_1_, user0_.email as email4_1_, user0_.name as name5_1_, user0_.pw as pw6_1_, user0_.tel as tel7_1_ from user user0_
+Hibernate: select user0_.id as id1_2_, user0_.admin as admin2_2_, user0_.birth as birth3_2_, user0_.email as email4_2_, user0_.name as name5_2_, user0_.pw as pw6_2_, user0_.tel as tel7_2_ from user user0_ where user0_.email=?
+Hibernate: select user0_.id as id1_2_, user0_.admin as admin2_2_, user0_.birth as birth3_2_, user0_.email as email4_2_, user0_.name as name5_2_, user0_.pw as pw6_2_, user0_.tel as tel7_2_ from user user0_
 Hibernate: delete from user where id=?
 Hibernate: insert into user (admin, birth, email, name, pw, tel) values (?, ?, ?, ?, ?, ?)
 Hibernate: select user0_.id as col_0_0_ from user user0_ where user0_.email=? limit ?
-Hibernate: select book0_.id as id1_0_, book0_.current as current2_0_, book0_.due_date as due_date3_0_, book0_.genre as genre4_0_, book0_.origin as origin5_0_, book0_.title as title6_0_, book0_.user_id as user_id7_0_ from book book0_
-Hibernate: select user0_.id as id1_1_, user0_.admin as admin2_1_, user0_.birth as birth3_1_, user0_.email as email4_1_, user0_.name as name5_1_, user0_.pw as pw6_1_, user0_.tel as tel7_1_ from user user0_
+Hibernate: select user0_.id as id1_2_, user0_.admin as admin2_2_, user0_.birth as birth3_2_, user0_.email as email4_2_, user0_.name as name5_2_, user0_.pw as pw6_2_, user0_.tel as tel7_2_ from user user0_
 Hibernate: delete from user where id=?
 Hibernate: select user0_.id as col_0_0_ from user user0_ where user0_.email=? limit ?
 Hibernate: insert into user (admin, birth, email, name, pw, tel) values (?, ?, ?, ?, ?, ?)
-Hibernate: select book0_.id as id1_0_, book0_.current as current2_0_, book0_.due_date as due_date3_0_, book0_.genre as genre4_0_, book0_.origin as origin5_0_, book0_.title as title6_0_, book0_.user_id as user_id7_0_ from book book0_
-Hibernate: select user0_.id as id1_1_, user0_.admin as admin2_1_, user0_.birth as birth3_1_, user0_.email as email4_1_, user0_.name as name5_1_, user0_.pw as pw6_1_, user0_.tel as tel7_1_ from user user0_
+Hibernate: select user0_.id as id1_2_, user0_.admin as admin2_2_, user0_.birth as birth3_2_, user0_.email as email4_2_, user0_.name as name5_2_, user0_.pw as pw6_2_, user0_.tel as tel7_2_ from user user0_
 Hibernate: delete from user where id=?
 </pre>
 </span>
@@ -203,7 +195,7 @@ Hibernate: delete from user where id=?
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.1</a> at 2022. 2. 12 오후 6:32:21</p>
+<a href="http://www.gradle.org">Gradle 7.1</a> at 2022. 2. 13 오후 6:00:23</p>
 </div>
 </div>
 </body>
