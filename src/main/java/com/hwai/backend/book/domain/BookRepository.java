@@ -6,7 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface BookRepository extends JpaRepository<Book, Long> {
-    @Query(value = "SELECT * FROM book b WHERE b.origin != b.current", nativeQuery = true)
+    @Query(value = "SELECT * FROM book b WHERE b.origin != b.current"
+            , nativeQuery = true)
     List<Book> findCheck();
 
+    @Query(value = "SELECT * FROM book b WHERE b.user_id IS NULL", nativeQuery = true)
+    List<Book> findLendAble();
 }

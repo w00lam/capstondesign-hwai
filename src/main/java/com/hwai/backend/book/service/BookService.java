@@ -2,7 +2,7 @@ package com.hwai.backend.book.service;
 
 import com.hwai.backend.book.controller.dto.BookSaveRequestDto;
 import com.hwai.backend.book.controller.dto.ChecklistResponseDto;
-import com.hwai.backend.common.exception.BadRequestException;
+import com.hwai.backend.book.controller.dto.LendAbleListResponseDto;
 import com.hwai.backend.common.exception.NotFoundException;
 import com.hwai.backend.book.controller.dto.LendRequestDto;
 import com.hwai.backend.book.domain.Book;
@@ -51,6 +51,13 @@ public class BookService {
     public List<ChecklistResponseDto> findCheck() {
         return bookRepository.findCheck().stream()
                 .map(ChecklistResponseDto::new)
+                .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public List<LendAbleListResponseDto> findLendAble() {
+        return bookRepository.findLendAble().stream()
+                .map(LendAbleListResponseDto::new)
                 .collect(Collectors.toList());
     }
 }

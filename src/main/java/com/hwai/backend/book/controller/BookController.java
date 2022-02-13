@@ -2,6 +2,7 @@ package com.hwai.backend.book.controller;
 
 import com.hwai.backend.book.controller.dto.BookSaveRequestDto;
 import com.hwai.backend.book.controller.dto.ChecklistResponseDto;
+import com.hwai.backend.book.controller.dto.LendAbleListResponseDto;
 import com.hwai.backend.book.controller.dto.LendRequestDto;
 import com.hwai.backend.common.message.Message;
 import com.hwai.backend.book.service.BookService;
@@ -17,7 +18,8 @@ import java.util.List;
 @RequestMapping("/api/v1/books")
 @RestController
 public class BookController {
-    private static final String VIEW_CHECK_LIST_SUCCESS_MESSAGE = "체크리스트 불러오기 성공";
+    private static final String VIEW_CHECK_LIST_SUCCESS_MESSAGE = "체크리스트 조회 성공";
+    private static final String VIEW_ABLE_LIST_SUCCESS_MESSAGE = "대출가능 도서 조회 성공";
 
     private final BookService bookService;
 
@@ -42,5 +44,13 @@ public class BookController {
         List<ChecklistResponseDto> checklistResponseDtoList = bookService.findCheck();
         log.info(VIEW_CHECK_LIST_SUCCESS_MESSAGE);
         return checklistResponseDtoList;
+    }
+
+    @GetMapping("/list")
+    @ResponseStatus(HttpStatus.OK)
+    public List<LendAbleListResponseDto> viewLendAbleList() {
+        List<LendAbleListResponseDto> lendAbleListResponseDtoList = bookService.findLendAble();
+        log.info(VIEW_ABLE_LIST_SUCCESS_MESSAGE);
+        return lendAbleListResponseDtoList;
     }
 }
