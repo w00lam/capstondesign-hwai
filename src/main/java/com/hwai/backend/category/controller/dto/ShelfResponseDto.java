@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ShelfResponseDto {
     private String genre;
-    private String row;
+    private String shelf;
 
     @Builder
     public ShelfResponseDto(Category category){
         this.genre = category.getGenre();
-        this.row = category.getShelf();
+        this.shelf = category.getShelf();
     }
 }
