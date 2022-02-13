@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 public class CategoryService {
-    private CategoryRepository categoryRepository;
+    private final CategoryRepository categoryRepository;
 
     private static final String GENRE_DUPLICATION_MESSAGE = "장르 중복입니다.";
     private static final String CATEGORY_SAVE_SUCCESS_MESSAGE = "카테고리 저장 성공";

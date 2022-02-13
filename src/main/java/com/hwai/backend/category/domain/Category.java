@@ -18,7 +18,7 @@ public class Category {
     @Column(nullable = false)
     private String genre;
 
-    @Column
+    @Column(nullable = false)
     private String shelf;
 
     @Builder

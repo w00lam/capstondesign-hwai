@@ -22,7 +22,7 @@ public class CategoryController {
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public Message signUp(@RequestBody AddRequestDto addRequestDto){
+    public Message add(@RequestBody AddRequestDto addRequestDto){
         Message message = categoryService.add(addRequestDto);
         log.info(message.getMessage());
         return message;

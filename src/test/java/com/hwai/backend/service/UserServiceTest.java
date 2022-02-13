@@ -1,14 +1,10 @@
 package com.hwai.backend.service;
 
-import com.hwai.backend.book.controller.dto.LendRequestDto;
-import com.hwai.backend.book.domain.Book;
 import com.hwai.backend.book.domain.BookRepository;
 import com.hwai.backend.book.service.BookService;
-import com.hwai.backend.category.domain.Category;
 import com.hwai.backend.category.domain.CategoryRepository;
 import com.hwai.backend.category.service.CategoryService;
 import com.hwai.backend.common.exception.BadRequestException;
-import com.hwai.backend.common.exception.NotEqualsException;
 import com.hwai.backend.common.exception.NotFoundException;
 import com.hwai.backend.common.message.Message;
 import com.hwai.backend.user.controller.dto.*;
@@ -21,9 +17,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
