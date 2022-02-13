@@ -31,7 +31,7 @@ public class CategoryService {
 
     @Transactional(readOnly = true)
     public List<ShelfResponseDto> viewShelf() {
-        return categoryRepository.viewShelf().stream()
+        return categoryRepository.findAll().stream()
                 .map(ShelfResponseDto::new)
                 .collect(Collectors.toList());
     }
