@@ -35,8 +35,7 @@ public class Book {
     private User user;
 
     @Builder
-    public Book(Long id, String title, Category category) {
-        this.id = id;
+    public Book(String title, Category category) {
         this.title = title;
         this.shelf = category.getShelf();
     }
