@@ -7,13 +7,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @NoArgsConstructor
 @Entity
 public class Book {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,29 +20,27 @@ public class Book {
     @Column(nullable = false)
     private String title;
 
-    @Column
-    private LocalDateTime due_date;
+    private LocalDate due_date;
 
-    @Column
-    private String shelf;
-
-    @Column
     private String current;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
+
     @Builder
     public Book(String title, Category category) {
         this.title = title;
-        this.shelf = category.getShelf();
     }
 
     public void lend(User user) {
         this.user = user;
         user.getBooks().add(this);
-        this.due_date = LocalDateTime.now().plusDays(14);
+        this.due_date = LocalDate.now().plusDays(14);
         this.current = "대출중";
     }
 }
