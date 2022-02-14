@@ -44,13 +44,10 @@ public class BookService {
 
     @Transactional
     public Message lend(LendRequestDto lendRequestDto) {
-        User findUser = userRepository.findById(lendRequestDto.getUserId())
-                .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_MESSAGE));
-        for(Long bookId : lendRequestDto.getBookIdList()) {
-            Book findBook = bookRepository.findById(bookId)
-                    .orElseThrow(() -> new NotFoundException(BOOK_NOT_FOUND_MESSAGE));
-            findUser.getBooks().add(findBook);
-            findBook.lend(findUser);
+        User user = findUserById(lendRequestDto.getUserId());
+        for(Long bookId : lendRequestDto.getBookId()) {
+            Book book = findBookById(bookId);
+            book.lend(user);
         }
         return new Message(LEND_BOOK_MESSAGE);
     }
@@ -67,5 +64,15 @@ public class BookService {
         return bookRepository.findLendAble().stream()
                 .map(LendAbleListResponseDto::new)
                 .collect(Collectors.toList());
+    }
+
+    private User findUserById(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_MESSAGE));
+    }
+
+    private Book findBookById(Long bookId) {
+        return bookRepository.findById(bookId)
+                .orElseThrow(() -> new NotFoundException(BOOK_NOT_FOUND_MESSAGE));
     }
 }

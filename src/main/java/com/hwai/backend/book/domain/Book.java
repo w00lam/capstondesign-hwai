@@ -39,8 +39,13 @@ public class Book {
     }
 
     public void lend(User user) {
-        this.user = user;
         this.due_date = LocalDate.now().plusDays(14);
         this.current = "대출중";
+        setUser(user);
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+        user.getBooks().add(this);
     }
 }

@@ -37,7 +37,7 @@ public class User {
     @Column(nullable = false)
     private boolean admin;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REFRESH)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Book> books = new ArrayList<>();
 
     @Builder
