@@ -10,15 +10,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BookSaveRequestDto {
     private String title;
-    private Category category;
+    private Long categoryId;
 
     @Builder
-    public BookSaveRequestDto(String title, Category category) {
+    public BookSaveRequestDto(String title, Long categoryId) {
         this.title = title;
-        this.category = category;
+        this.categoryId = categoryId;
     }
 
-    public Book toEntity() {
+    public Book toEntity(Category category) {
         return Book.builder()
                 .title(title)
                 .category(category)

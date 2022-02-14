@@ -1,5 +1,6 @@
 package com.hwai.backend.service;
 
+import com.hwai.backend.book.controller.dto.BookSaveRequestDto;
 import com.hwai.backend.book.controller.dto.LendRequestDto;
 import com.hwai.backend.book.domain.Book;
 import com.hwai.backend.book.domain.BookRepository;
@@ -50,6 +51,29 @@ public class BookServiceTest {
         userRepository.deleteAll();
         bookRepository.deleteAll();
         categoryRepository.deleteAll();
+    }
+
+    @Test
+    public void 책_저장_성공() {
+        //given
+        Category category = Category.builder()
+                .genre("genre")
+                .shelf("1")
+                .build();
+        Category save = categoryRepository.save(category);
+
+        Book book = Book.builder()
+                .title("title")
+                .category(save)
+                .build();
+        Book add = bookRepository.save(book);
+
+        //when
+        BookSaveRequestDto bookSaveRequestDto = new BookSaveRequestDto("genre", save.getId());
+        Message message = bookService.save(bookSaveRequestDto);
+
+        //then
+        assertThat(message.getMessage()).isEqualTo("책 저장 성공");
     }
 
     @Test

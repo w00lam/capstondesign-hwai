@@ -3,6 +3,8 @@ package com.hwai.backend.book.service;
 import com.hwai.backend.book.controller.dto.BookSaveRequestDto;
 import com.hwai.backend.book.controller.dto.ChecklistResponseDto;
 import com.hwai.backend.book.controller.dto.LendAbleListResponseDto;
+import com.hwai.backend.category.domain.Category;
+import com.hwai.backend.category.domain.CategoryRepository;
 import com.hwai.backend.common.exception.NotFoundException;
 import com.hwai.backend.book.controller.dto.LendRequestDto;
 import com.hwai.backend.book.domain.Book;
@@ -22,26 +24,31 @@ import java.util.stream.Collectors;
 public class BookService {
     private final BookRepository bookRepository;
     private final UserRepository userRepository;
+    private final CategoryRepository categoryRepository;
 
     private static final String BOOK_SAVE_MESSAGE = "책 저장 성공";
     private static final String LEND_BOOK_MESSAGE = "책 대출 성공";
     private static final String USER_NOT_FOUND_MESSAGE = "해당 유저가 존재하지 않습니다.";
+    private static final String CATEGORY_NOT_FOUND_MESSAGE = "해당 카테고리가 존재하지 않습니다.";
 
     @Transactional
     public Message save(BookSaveRequestDto bookSaveRequestDto) {
-        Book book = bookSaveRequestDto.toEntity();
+        Category category = categoryRepository.findById(bookSaveRequestDto.getCategoryId())
+                .orElseThrow(() -> new NotFoundException(CATEGORY_NOT_FOUND_MESSAGE));
+        Book book = bookSaveRequestDto.toEntity(category);
         bookRepository.save(book);
         return new Message(BOOK_SAVE_MESSAGE);
     }
 
     @Transactional
     public Message lend(LendRequestDto lendRequestDto) {
-        User findUser = userRepository.findById(lendRequestDto.getUser_id())
+        User findUser = userRepository.findById(lendRequestDto.getUserId())
                 .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_MESSAGE));
-        bookRepository.findById(lendRequestDto.getBookList().stream().iterator().next().getId())
-                .orElseThrow(() -> new IllegalArgumentException("해당 책이 없습니다. id="
-                        + lendRequestDto.getBookList().stream().iterator().next().getId()));
-        for(Book findBook : lendRequestDto.getBookList()){
+        for(Book findBook : lendRequestDto.getBookList()) {
+            bookRepository.findById(findBook.getId())
+                    .orElseThrow(() -> new IllegalArgumentException("해당 책이 없습니다. id=" + findBook.getId()));
+        }
+        for(Book findBook : lendRequestDto.getBookList()) {
             findBook.lend(findUser);
         }
         return new Message(LEND_BOOK_MESSAGE);
