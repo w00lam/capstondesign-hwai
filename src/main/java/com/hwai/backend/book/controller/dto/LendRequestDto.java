@@ -1,6 +1,5 @@
 package com.hwai.backend.book.controller.dto;
 
-import com.hwai.backend.book.domain.Book;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
