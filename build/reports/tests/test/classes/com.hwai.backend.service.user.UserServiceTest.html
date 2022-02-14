@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.098s</div>
+<div class="counter">0.091s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,7 +79,7 @@
 </thead>
 <tr>
 <td class="success">로그인_비밀번호_불일치</td>
-<td class="success">0.008s</td>
+<td class="success">0.006s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -89,32 +89,32 @@
 </tr>
 <tr>
 <td class="success">로그인_이메일_불일치</td>
-<td class="success">0.006s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">비밀번호_변경_성공</td>
-<td class="success">0.006s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">페이지_불러오기</td>
-<td class="success">0.006s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">회원가입_성공</td>
 <td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
+<td class="success">비밀번호_변경_성공</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">페이지_불러오기</td>
+<td class="success">0.005s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">회원가입_성공</td>
+<td class="success">0.007s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
 <td class="success">회원중복</td>
-<td class="success">0.006s</td>
+<td class="success">0.008s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">회원탈퇴_성공</td>
-<td class="success">0.027s</td>
+<td class="success">0.023s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -122,12 +122,12 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2022-02-14 15:35:20.556  INFO 19724 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.hwai.backend.service.user.UserServiceTest], using SpringBootContextLoader
-2022-02-14 15:35:20.557  INFO 19724 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.hwai.backend.service.user.UserServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2022-02-14 15:35:20.557  INFO 19724 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.hwai.backend.service.user.UserServiceTest]: UserServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2022-02-14 15:35:20.564  INFO 19724 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.hwai.backend.Application for test class com.hwai.backend.service.user.UserServiceTest
-2022-02-14 15:35:20.566  INFO 19724 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-2022-02-14 15:35:20.567  INFO 19724 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@22198909, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2f856e6c, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@8d2149d, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@62d6aefa, org.springframework.test.context.support.DirtiesContextTestExecutionListener@ce93268, org.springframework.test.context.transaction.TransactionalTestExecutionListener@89bcb97, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@10f550e5, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@47839d7f, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@2bc9d95, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@542d2926, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@6e65293e, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@355629e8, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@53e04ae2, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6eb92da1]
+<pre>2022-02-14 16:17:12.157  INFO 21064 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.hwai.backend.service.user.UserServiceTest], using SpringBootContextLoader
+2022-02-14 16:17:12.158  INFO 21064 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.hwai.backend.service.user.UserServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-02-14 16:17:12.158  INFO 21064 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.hwai.backend.service.user.UserServiceTest]: UserServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2022-02-14 16:17:12.163  INFO 21064 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.hwai.backend.Application for test class com.hwai.backend.service.user.UserServiceTest
+2022-02-14 16:17:12.165  INFO 21064 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2022-02-14 16:17:12.166  INFO 21064 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@15f1181, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@50c957ca, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@30a4635e, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@7d0503d9, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4afd6e1, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1e42b6b9, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@def98bc, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@58214913, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@22c39428, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@293f19b7, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@58644e54, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@adffd9a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@34835a3d, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@65a01fbb]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -137,25 +137,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.1.7.RELEASE)
 
-2022-02-14 15:35:20.595  INFO 19724 --- [    Test worker] c.h.b.service.user.UserServiceTest       : Starting UserServiceTest on DESKTOP-0R6UP8A with PID 19724 (started by Lee in D:\Users\Lee\Documents\git\Java\project\capstondesign-hwai-be)
-2022-02-14 15:35:20.596  INFO 19724 --- [    Test worker] c.h.b.service.user.UserServiceTest       : No active profile set, falling back to default profiles: default
-2022-02-14 15:35:20.805  INFO 19724 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
-2022-02-14 15:35:20.850  INFO 19724 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44ms. Found 3 repository interfaces.
-2022-02-14 15:35:21.083  INFO 19724 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$44aef0c3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-02-14 15:35:21.192  INFO 19724 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2022-02-14 15:35:21.195  INFO 19724 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2022-02-14 15:35:21.245  INFO 19724 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+2022-02-14 16:17:12.199  INFO 21064 --- [    Test worker] c.h.b.service.user.UserServiceTest       : Starting UserServiceTest on DESKTOP-0R6UP8A with PID 21064 (started by Lee in D:\Users\Lee\Documents\git\Java\project\capstondesign-hwai-be)
+2022-02-14 16:17:12.199  INFO 21064 --- [    Test worker] c.h.b.service.user.UserServiceTest       : No active profile set, falling back to default profiles: default
+2022-02-14 16:17:12.386  INFO 21064 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-02-14 16:17:12.407  INFO 21064 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21ms. Found 3 repository interfaces.
+2022-02-14 16:17:12.465  INFO 21064 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4d568ff7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-02-14 16:17:12.549  INFO 21064 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2022-02-14 16:17:12.550  INFO 21064 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2022-02-14 16:17:12.577  INFO 21064 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-2022-02-14 15:35:21.257  INFO 19724 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
-2022-02-14 15:35:21.550  INFO 19724 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-02-14 15:35:21.983  INFO 19724 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2022-02-14 15:35:21.993  WARN 19724 --- [    Test worker] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-02-14 15:35:22.258  INFO 19724 --- [    Test worker] c.h.b.service.user.UserServiceTest       : Started UserServiceTest in 1.685 seconds (JVM running for 8.866)
+2022-02-14 16:17:12.585  INFO 21064 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2022-02-14 16:17:12.645  INFO 21064 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-14 16:17:12.991  INFO 21064 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-14 16:17:13.002  WARN 21064 --- [    Test worker] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-14 16:17:13.278  INFO 21064 --- [    Test worker] c.h.b.service.user.UserServiceTest       : Started UserServiceTest in 1.106 seconds (JVM running for 7.935)
 Hibernate: insert into user (admin, birth, email, name, pw, tel) values (?, ?, ?, ?, ?, ?)
 Hibernate: select user0_.id as id1_2_0_, user0_.admin as admin2_2_0_, user0_.birth as birth3_2_0_, user0_.email as email4_2_0_, user0_.name as name5_2_0_, user0_.pw as pw6_2_0_, user0_.tel as tel7_2_0_ from user user0_ where user0_.id=?
 Hibernate: delete from user where id=?
-2022-02-14 15:35:22.304  INFO 19724 --- [    Test worker] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2022-02-14 16:17:13.320  INFO 21064 --- [    Test worker] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
 Hibernate: select user0_.id as col_0_0_ from user user0_ where user0_.email=? limit ?
 Hibernate: insert into user (admin, birth, email, name, pw, tel) values (?, ?, ?, ?, ?, ?)
 Hibernate: select user0_.id as id1_2_, user0_.admin as admin2_2_, user0_.birth as birth3_2_, user0_.email as email4_2_, user0_.name as name5_2_, user0_.pw as pw6_2_, user0_.tel as tel7_2_ from user user0_ where user0_.email=?
@@ -181,7 +181,7 @@ Hibernate: insert into user (admin, birth, email, name, pw, tel) values (?, ?, ?
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.1</a> at 2022. 2. 14 오후 3:35:22</p>
+<a href="http://www.gradle.org">Gradle 7.1</a> at 2022. 2. 14 오후 4:17:13</p>
 </div>
 </div>
 </body>

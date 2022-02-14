@@ -11,7 +11,6 @@ import com.hwai.backend.user.controller.dto.*;
 import com.hwai.backend.user.domian.User;
 import com.hwai.backend.user.domian.UserRepository;
 import com.hwai.backend.user.service.UserService;
-import org.junit.After;
 import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.runner.RunWith;
@@ -44,10 +43,10 @@ public class UserServiceTest {
     private CategoryService categoryService;
 
     @AfterEach
-    public void cleanup() {
+    void cleanUp() {
         userRepository.deleteAll();
-        categoryRepository.deleteAll();
         bookRepository.deleteAll();
+        categoryRepository.deleteAll();
     }
 
     @Test
@@ -146,14 +145,14 @@ public class UserServiceTest {
     public void 로그인_이메일_불일치() {
         //given
         User user = User.builder()
-                .email("test@naver.com")
+                .email("test@test.com")
                 .name("tester")
                 .birth("111111")
                 .tel("010-1111-2222")
                 .pw("1234")
                 .admin(false)
                 .build();
-        LoginRequestDto loginRequestDto = new LoginRequestDto("test@navar.com", "1234");
+        LoginRequestDto loginRequestDto = new LoginRequestDto("test@asd.com", "1234");
         userRepository.save(user);
 
         //when
@@ -167,14 +166,14 @@ public class UserServiceTest {
     public void 로그인_비밀번호_불일치() {
         //given
         User user = User.builder()
-                .email("test@test.com")
+                .email("asd")
                 .name("tester")
                 .birth("111111")
                 .tel("010-1111-2222")
                 .pw("1234")
                 .admin(false)
                 .build();
-        LoginRequestDto loginRequestDto = new LoginRequestDto("test@test.com", "12345");
+        LoginRequestDto loginRequestDto = new LoginRequestDto("asd", "12345");
         userRepository.save(user);
 
         //when
