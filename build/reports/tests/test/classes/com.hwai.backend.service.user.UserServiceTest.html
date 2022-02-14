@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class com.hwai.backend.service.user.UserServiceTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class com.hwai.backend.service.user.UserServiceTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.hwai.backend.service.user.html">com.hwai.backend.service.user</a> &gt; UserServiceTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">8</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.105s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">로그인_비밀번호_불일치</td>
+<td class="success">0.008s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">로그인_성공</td>
+<td class="success">0.040s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">로그인_이메일_불일치</td>
+<td class="success">0.006s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">비밀번호_변경_성공</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">페이지_불러오기</td>
+<td class="success">0.006s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">회원가입_성공</td>
+<td class="success">0.006s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">회원중복</td>
+<td class="success">0.007s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">회원탈퇴_성공</td>
+<td class="success">0.029s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2022-02-14 15:27:31.724  INFO 19812 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.hwai.backend.service.user.UserServiceTest], using SpringBootContextLoader
+2022-02-14 15:27:31.724  INFO 19812 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.hwai.backend.service.user.UserServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-02-14 15:27:31.725  INFO 19812 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.hwai.backend.service.user.UserServiceTest]: UserServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2022-02-14 15:27:31.735  INFO 19812 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.hwai.backend.Application for test class com.hwai.backend.service.user.UserServiceTest
+2022-02-14 15:27:31.736  INFO 19812 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2022-02-14 15:27:31.737  INFO 19812 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@64908613, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@77b1d649, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@6767016b, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6d0f48e5, org.springframework.test.context.support.DirtiesContextTestExecutionListener@dcfeb49, org.springframework.test.context.transaction.TransactionalTestExecutionListener@74b56727, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@2b064c83, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@3cd96166, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@4ebe4017, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@116d9ab8, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@816ae42, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7fb32c77, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@43b1656e, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3e749ffa]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.7.RELEASE)
+
+2022-02-14 15:27:31.777  INFO 19812 --- [    Test worker] c.h.b.service.user.UserServiceTest       : Starting UserServiceTest on DESKTOP-0R6UP8A with PID 19812 (started by Lee in D:\Users\Lee\Documents\git\Java\project\capstondesign-hwai-be)
+2022-02-14 15:27:31.779  INFO 19812 --- [    Test worker] c.h.b.service.user.UserServiceTest       : No active profile set, falling back to default profiles: default
+2022-02-14 15:27:32.013  INFO 19812 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-02-14 15:27:32.041  INFO 19812 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28ms. Found 3 repository interfaces.
+2022-02-14 15:27:32.107  INFO 19812 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$212e1ab0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-02-14 15:27:32.186  INFO 19812 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2022-02-14 15:27:32.190  INFO 19812 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2022-02-14 15:27:32.219  INFO 19812 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2022-02-14 15:27:32.227  INFO 19812 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2022-02-14 15:27:32.303  INFO 19812 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-14 15:27:32.727  INFO 19812 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-14 15:27:32.738  WARN 19812 --- [    Test worker] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-14 15:27:33.010  INFO 19812 --- [    Test worker] c.h.b.service.user.UserServiceTest       : Started UserServiceTest in 1.261 seconds (JVM running for 11.808)
+Hibernate: insert into user (admin, birth, email, name, pw, tel) values (?, ?, ?, ?, ?, ?)
+Hibernate: select user0_.id as id1_2_0_, user0_.admin as admin2_2_0_, user0_.birth as birth3_2_0_, user0_.email as email4_2_0_, user0_.name as name5_2_0_, user0_.pw as pw6_2_0_, user0_.tel as tel7_2_0_ from user user0_ where user0_.id=?
+Hibernate: delete from user where id=?
+2022-02-14 15:27:33.061  INFO 19812 --- [    Test worker] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+Hibernate: select user0_.id as col_0_0_ from user user0_ where user0_.email=? limit ?
+Hibernate: insert into user (admin, birth, email, name, pw, tel) values (?, ?, ?, ?, ?, ?)
+Hibernate: select user0_.id as id1_2_, user0_.admin as admin2_2_, user0_.birth as birth3_2_, user0_.email as email4_2_, user0_.name as name5_2_, user0_.pw as pw6_2_, user0_.tel as tel7_2_ from user user0_ where user0_.email=?
+Hibernate: select user0_.id as id1_2_, user0_.admin as admin2_2_, user0_.birth as birth3_2_, user0_.email as email4_2_, user0_.name as name5_2_, user0_.pw as pw6_2_, user0_.tel as tel7_2_ from user user0_ where user0_.email=?
+Hibernate: insert into user (admin, birth, email, name, pw, tel) values (?, ?, ?, ?, ?, ?)
+Hibernate: select user0_.id as id1_2_0_, user0_.admin as admin2_2_0_, user0_.birth as birth3_2_0_, user0_.email as email4_2_0_, user0_.name as name5_2_0_, user0_.pw as pw6_2_0_, user0_.tel as tel7_2_0_ from user user0_ where user0_.id=?
+Hibernate: insert into user (admin, birth, email, name, pw, tel) values (?, ?, ?, ?, ?, ?)
+Hibernate: select user0_.id as id1_2_, user0_.admin as admin2_2_, user0_.birth as birth3_2_, user0_.email as email4_2_, user0_.name as name5_2_, user0_.pw as pw6_2_, user0_.tel as tel7_2_ from user user0_ where user0_.email=?
+Hibernate: insert into user (admin, birth, email, name, pw, tel) values (?, ?, ?, ?, ?, ?)
+Hibernate: select user0_.id as id1_2_, user0_.admin as admin2_2_, user0_.birth as birth3_2_, user0_.email as email4_2_, user0_.name as name5_2_, user0_.pw as pw6_2_, user0_.tel as tel7_2_ from user user0_ where user0_.email=?
+Hibernate: insert into user (admin, birth, email, name, pw, tel) values (?, ?, ?, ?, ?, ?)
+Hibernate: select user0_.id as col_0_0_ from user user0_ where user0_.email=? limit ?
+Hibernate: select user0_.id as col_0_0_ from user user0_ where user0_.email=? limit ?
+Hibernate: insert into user (admin, birth, email, name, pw, tel) values (?, ?, ?, ?, ?, ?)
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.1</a> at 2022. 2. 14 오후 3:27:33</p>
+</div>
+</div>
+</body>
+</html>

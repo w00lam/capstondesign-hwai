@@ -1,4 +1,4 @@
-package com.hwai.backend.service;
+package com.hwai.backend.service.user;
 
 import com.hwai.backend.book.domain.BookRepository;
 import com.hwai.backend.book.service.BookService;
@@ -13,6 +13,7 @@ import com.hwai.backend.user.domian.UserRepository;
 import com.hwai.backend.user.service.UserService;
 import org.junit.After;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -42,9 +43,11 @@ public class UserServiceTest {
     @Autowired
     private CategoryService categoryService;
 
-    @After
+    @AfterEach
     public void cleanup() {
         userRepository.deleteAll();
+        categoryRepository.deleteAll();
+        bookRepository.deleteAll();
     }
 
     @Test
@@ -164,14 +167,14 @@ public class UserServiceTest {
     public void 로그인_비밀번호_불일치() {
         //given
         User user = User.builder()
-                .email("test@naver.com")
+                .email("test@test.com")
                 .name("tester")
                 .birth("111111")
                 .tel("010-1111-2222")
                 .pw("1234")
                 .admin(false)
                 .build();
-        LoginRequestDto loginRequestDto = new LoginRequestDto("test@naver.com", "12345");
+        LoginRequestDto loginRequestDto = new LoginRequestDto("test@test.com", "12345");
         userRepository.save(user);
 
         //when

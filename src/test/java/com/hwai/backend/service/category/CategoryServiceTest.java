@@ -1,4 +1,4 @@
-package com.hwai.backend.service;
+package com.hwai.backend.service.category;
 
 import com.hwai.backend.category.controller.dto.AddRequestDto;
 import com.hwai.backend.category.domain.Category;
@@ -7,6 +7,7 @@ import com.hwai.backend.category.service.CategoryService;
 import com.hwai.backend.common.message.Message;
 import org.junit.After;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +24,7 @@ public class CategoryServiceTest {
     @Autowired
     private CategoryService categoryService;
 
-    @After
+    @AfterEach
     public void cleanUp() {
         categoryRepository.deleteAll();
     }

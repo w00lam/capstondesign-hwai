@@ -1,4 +1,4 @@
-package com.hwai.backend.service;
+package com.hwai.backend.service.book;
 
 import com.hwai.backend.book.controller.dto.BookSaveRequestDto;
 import com.hwai.backend.book.controller.dto.LendRequestDto;
@@ -12,8 +12,9 @@ import com.hwai.backend.user.domian.User;
 import com.hwai.backend.user.domian.UserRepository;
 import com.hwai.backend.book.service.BookService;
 import com.hwai.backend.user.service.UserService;
-import org.junit.After;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -46,8 +47,11 @@ public class BookServiceTest {
     @Autowired
     private CategoryService categoryService;
 
-    @After
-    public void cleanUp() {
+    @AfterEach
+    void cleanUp() {
+        userRepository.deleteAll();
+        bookRepository.deleteAll();
+        categoryRepository.deleteAll();
     }
 
     @Test
@@ -72,25 +76,12 @@ public class BookServiceTest {
         //then
         assertThat(message.getMessage()).isEqualTo("책 저장 성공");
     }
-
+/**
     @Test
     public void 책_대출_성공() {
         //given
-        User user = User.builder()
-                .email("test@naver.com")
-                .name("tester")
-                .birth("111111")
-                .tel("010-1111-2222")
-                .pw("1234")
-                .admin(false)
-                .build();
-        User member = userRepository.save(user);
-
-        Category category = Category.builder()
-                .genre("genre")
-                .shelf("1")
-                .build();
-        Category save = categoryRepository.save(category);
+        User member = userRepository.findAll().get(0);
+        Category save = categoryRepository.findAll().get(0);
 
         Book book1 = Book.builder()
                 .title("title")
@@ -115,5 +106,7 @@ public class BookServiceTest {
         //then
         assertThat(member.getBooks().get(0).getTitle()).isEqualTo(add1.getTitle());
         assertThat(member.getBooks().get(1).getTitle()).isEqualTo(add1.getTitle());
+        assertThat(message.getMessage()).isEqualTo("책 대출 성공");
     }
+    */
 }
