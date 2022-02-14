@@ -10,6 +10,7 @@ import com.hwai.backend.book.controller.dto.LendRequestDto;
 import com.hwai.backend.book.domain.Book;
 import com.hwai.backend.book.domain.BookRepository;
 import com.hwai.backend.common.message.Message;
+import com.hwai.backend.user.controller.dto.MyListResponseDto;
 import com.hwai.backend.user.domian.User;
 import com.hwai.backend.user.domian.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,7 @@ public class BookService {
     private static final String LEND_BOOK_MESSAGE = "책 대출 성공";
     private static final String USER_NOT_FOUND_MESSAGE = "해당 유저가 존재하지 않습니다.";
     private static final String CATEGORY_NOT_FOUND_MESSAGE = "해당 카테고리가 존재하지 않습니다.";
+    private static final String BOOK_NOT_FOUND_MESSAGE = "해당 책이 존재하지 않습니다.";
 
     @Transactional
     public Message save(BookSaveRequestDto bookSaveRequestDto) {
@@ -44,11 +46,9 @@ public class BookService {
     public Message lend(LendRequestDto lendRequestDto) {
         User findUser = userRepository.findById(lendRequestDto.getUserId())
                 .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_MESSAGE));
-        for(Book findBook : lendRequestDto.getBookList()) {
-            bookRepository.findById(findBook.getId())
-                    .orElseThrow(() -> new IllegalArgumentException("해당 책이 없습니다. id=" + findBook.getId()));
-        }
-        for(Book findBook : lendRequestDto.getBookList()) {
+        for(Long bookId : lendRequestDto.getBookIdList()) {
+            Book findBook = bookRepository.findById(bookId)
+                    .orElseThrow(() -> new NotFoundException(BOOK_NOT_FOUND_MESSAGE));
             findBook.lend(findUser);
         }
         return new Message(LEND_BOOK_MESSAGE);

@@ -12,11 +12,11 @@ import java.util.List;
 @NoArgsConstructor
 public class LendRequestDto {
     private Long userId;
-    private List<Book> bookList = new ArrayList<>();
+    private List<Long> bookIdList = new ArrayList<>();
 
     @Builder
-    public LendRequestDto(Long userId, List<Book> bookList) {
+    public LendRequestDto(Long userId, List<Long> bookIdList) {
         this.userId = userId;
-        this.bookList = bookList;
+        this.bookIdList = bookIdList;
     }
 }

@@ -48,9 +48,6 @@ public class BookServiceTest {
 
     @After
     public void cleanUp() {
-        userRepository.deleteAll();
-        bookRepository.deleteAll();
-        categoryRepository.deleteAll();
     }
 
     @Test
@@ -96,31 +93,27 @@ public class BookServiceTest {
         Category save = categoryRepository.save(category);
 
         Book book1 = Book.builder()
-                .title("title1")
+                .title("title")
                 .category(save)
                 .build();
         Book book2 = Book.builder()
                 .title("title2")
                 .category(save)
                 .build();
-        Book book3 = Book.builder()
-                .title("title3")
-                .category(save)
-                .build();
         Book add1 = bookRepository.save(book1);
         Book add2 = bookRepository.save(book2);
-        Book add3 = bookRepository.save(book3);
 
-        List<Book> bookList = new ArrayList<>();
-        bookList.add(add1);
-        bookList.add(add2);
-        bookList.add(add3);
+        List<Long> bookID = new ArrayList<>();
+
+        bookID.add(add1.getId());
+        bookID.add(add2.getId());
 
         //when
-        LendRequestDto lendRequestDto = new LendRequestDto(member.getId(), bookList);
+        LendRequestDto lendRequestDto = new LendRequestDto(member.getId(), bookID);
         Message message = bookService.lend(lendRequestDto);
 
         //then
-        assertThat(message.getMessage()).isEqualTo("책 대출 성공");
+        assertThat(member.getBooks().get(0).getTitle()).isEqualTo(add1.getTitle());
+        assertThat(member.getBooks().get(1).getTitle()).isEqualTo(add1.getTitle());
     }
 }
