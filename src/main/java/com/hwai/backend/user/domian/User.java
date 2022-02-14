@@ -38,7 +38,6 @@ public class User {
     private boolean admin;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REFRESH)
-    @Column
     private List<Book> books = new ArrayList<>();
 
     @Builder
