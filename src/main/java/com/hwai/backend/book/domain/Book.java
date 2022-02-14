@@ -40,7 +40,6 @@ public class Book {
 
     public void lend(User user) {
         this.user = user;
-        user.getBooks().add(this);
         this.due_date = LocalDate.now().plusDays(14);
         this.current = "대출중";
     }

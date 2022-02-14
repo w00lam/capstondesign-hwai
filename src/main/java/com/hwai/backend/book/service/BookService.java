@@ -49,6 +49,7 @@ public class BookService {
         for(Long bookId : lendRequestDto.getBookIdList()) {
             Book findBook = bookRepository.findById(bookId)
                     .orElseThrow(() -> new NotFoundException(BOOK_NOT_FOUND_MESSAGE));
+            findUser.getBooks().add(findBook);
             findBook.lend(findUser);
         }
         return new Message(LEND_BOOK_MESSAGE);

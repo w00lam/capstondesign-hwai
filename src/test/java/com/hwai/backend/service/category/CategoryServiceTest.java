@@ -5,7 +5,6 @@ import com.hwai.backend.category.domain.Category;
 import com.hwai.backend.category.domain.CategoryRepository;
 import com.hwai.backend.category.service.CategoryService;
 import com.hwai.backend.common.exception.BadRequestException;
-import com.hwai.backend.common.message.Message;
 import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.runner.RunWith;
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 @RunWith(SpringRunner.class)
