@@ -107,46 +107,16 @@ public class BookServiceTest {
         Book add1 = bookRepository.save(book1);
         Book add2 = bookRepository.save(book2);
 
-        List<Long> bookID = new ArrayList<>();
+        List<Book> bookList = new ArrayList<>();
 
-        bookID.add(add1.getId());
-        bookID.add(add2.getId());
+        bookList.add(add1);
+        bookList.add(add2);
 
         //when
-        LendRequestDto lendRequestDto = new LendRequestDto(member.getId(), bookID);
+        LendRequestDto lendRequestDto = new LendRequestDto(member.getId(), add1.getId());
         Message message = bookService.lend(lendRequestDto);
 
-        member.getBooks().add(add1);
-        member.getBooks().add(add2);
-
         //then
-        assertThat(member.getBooks().get(0).getTitle()).isEqualTo(add1.getTitle());
-        assertThat(member.getBooks().get(1).getTitle()).isEqualTo(add2.getTitle());
         assertThat(message.getMessage()).isEqualTo("책 대출 성공");
-    }
-
-    @Test
-    public void 책_대출_실패() {
-        //given
-        User user = User.builder()
-                .email("test@test.com")
-                .name("tester")
-                .birth("111111")
-                .tel("010-1111-2222")
-                .pw("1234")
-                .admin(false)
-                .build();
-        User member = userRepository.save(user);
-
-        List<Long> bookID = new ArrayList<>();
-        bookID.add(0l);
-
-        //when
-        LendRequestDto lendRequestDto = new LendRequestDto(member.getId(), bookID);
-
-        //then
-        assertThatThrownBy(() -> bookService.lend(lendRequestDto))
-                .isInstanceOf(NotFoundException.class)
-                .hasMessage("해당 책이 존재하지 않습니다.");
     }
 }

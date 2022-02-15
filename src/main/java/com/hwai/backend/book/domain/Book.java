@@ -7,6 +7,7 @@ import com.hwai.backend.user.domian.UserRepository;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -35,8 +36,9 @@ public class Book {
     private Category category;
 
     @Builder
-    public Book(String title, Category category) {
+    public Book(String title, Category category, User user) {
         this.title = title;
+        this.user = user;
         this.category = category;
     }
 
@@ -46,6 +48,7 @@ public class Book {
         setUser(user);
     }
 
+    // 연관관계 편의 메소드
     public void setUser(User user) {
         this.user = user;
         user.getBooks().add(this);
