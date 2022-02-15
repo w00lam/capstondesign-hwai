@@ -45,12 +45,9 @@ public class BookService {
     @Transactional
     public Message lend(LendRequestDto lendRequestDto) {
         User user = findUserById(lendRequestDto.getUserId());
-        for(Long bookId : lendRequestDto.getBookId()) {
-            Book book = findBookById(bookId);
+        for(int i = 0; i < lendRequestDto.getBookId().size(); i++) {
+            Book book = findBookById(lendRequestDto.getBookId().get(i));
             book.lend(user);
-        }
-        if(user.getBooks().isEmpty()){
-            return new Message(BOOK_NOT_FOUND_MESSAGE);
         }
         return new Message(LEND_BOOK_MESSAGE);
     }
