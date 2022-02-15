@@ -1,6 +1,5 @@
 package com.hwai.backend.book.controller.dto;
 
-import com.hwai.backend.book.domain.Book;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,11 +11,11 @@ import java.util.List;
 @NoArgsConstructor
 public class LendRequestDto {
     private Long userId;
-    private Long bookId;
+    private List<Long> bookId = new ArrayList<>();
 
     @Builder
-    public LendRequestDto(Long userId, Long bookId) {
+    public LendRequestDto(Long userId, List<Long> bookId) {
         this.userId = userId;
-        this.bookId = bookId;
+        this.bookId.addAll(bookId);
     }
 }
