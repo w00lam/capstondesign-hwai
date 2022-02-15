@@ -1,7 +1,9 @@
 package com.hwai.backend.book.domain;
 
+import com.hwai.backend.book.controller.dto.LendRequestDto;
 import com.hwai.backend.category.domain.Category;
 import com.hwai.backend.user.domian.User;
+import com.hwai.backend.user.domian.UserRepository;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

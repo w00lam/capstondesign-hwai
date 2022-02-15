@@ -46,8 +46,8 @@ public class BookService {
     public Message lend(LendRequestDto lendRequestDto) {
         User user = findUserById(lendRequestDto.getUserId());
         for(Long bookId : lendRequestDto.getBookId()) {
-            Book book = findBookById(bookId);
-            book.lend(user);
+            findBookById(bookId).lend(user);
+            user.getBooks().add(findBookById(bookId));
         }
         return new Message(LEND_BOOK_MESSAGE);
     }

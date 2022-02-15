@@ -112,12 +112,12 @@ public class BookServiceTest {
         bookID.add(add1.getId());
         bookID.add(add2.getId());
 
-        member.getBooks().add(add1);
-        member.getBooks().add(add2);
-
         //when
         LendRequestDto lendRequestDto = new LendRequestDto(member.getId(), bookID);
         Message message = bookService.lend(lendRequestDto);
+
+        member.getBooks().add(add1);
+        member.getBooks().add(add2);
 
         //then
         assertThat(member.getBooks().get(0).getTitle()).isEqualTo(add1.getTitle());
