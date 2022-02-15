@@ -43,10 +43,10 @@ public class BookService {
     }
 
     @Transactional
-    public Message lend(LendRequestDto lendRequestDto) {
-        User user = findUserById(lendRequestDto.getUserId());
-        for(int i = 0; i < lendRequestDto.getBookId().size(); i++) {
-            Book book = findBookById(lendRequestDto.getBookId().get(i));
+    public Message lend(List<LendRequestDto> lendRequestDto) {
+        User user = findUserById(lendRequestDto.get(0).getUserId());
+        for(int i = 0; i < lendRequestDto.size(); i++) {
+            Book book = findBookById(lendRequestDto.get(i).getBookId());
             book.lend(user);
         }
         return new Message(LEND_BOOK_MESSAGE);

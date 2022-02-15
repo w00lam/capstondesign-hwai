@@ -33,7 +33,7 @@ public class BookController {
 
     @PatchMapping("/lend")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void lend(@RequestBody LendRequestDto lendRequestDto) {
+    public void lend(@RequestBody List<LendRequestDto> lendRequestDto) {
         Message message = bookService.lend(lendRequestDto);
         log.info(message.getMessage());
     }
