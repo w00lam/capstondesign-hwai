@@ -87,6 +87,15 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
+    public FindPwResponseDto findPw(FindPwRequestDto findPwRequestDto) {
+        checkUser(findPwRequestDto.getName(), findPwRequestDto.getBirth(), findPwRequestDto.getEmail());
+        User findUser = userRepository.findByEmail(findPwRequestDto.getEmail())
+                .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_MESSAGE));
+        findUser.findPw(randomPw(7));
+        return new FindPwResponseDto(findUser);
+    }
+
     private void checkDuplicateEmail(String email) {
         if (userRepository.existsByEmail(email)) {
             throw new BadRequestException(EMAIL_DUPLICATION_MESSAGE);
@@ -114,5 +123,29 @@ public class UserService {
         if (bookList.isEmpty()) {
             throw new BadRequestException(BOOK_LIST_IS_EMPTY);
         }
+    }
+
+    private void checkUser(String name, String birth, String email) {
+        if(!(userRepository.existsByName(name) && userRepository.existsByBirth(birth)
+        && userRepository.existsByEmail(email))) {
+            throw new BadRequestException(USER_NOT_FOUND_MESSAGE);
+        }
+    }
+
+    private String randomPw(int length) {
+        int index = 0;
+        char[] charSet = new char[] {
+                '0','1','2','3','4','5','6','7','8','9'
+                ,'a','b','c','d','e','f','g','h','i','j','k'
+                ,'l','n','m','o','p','q','r','s','t','u','v'
+                ,'w','s','y','z'};
+
+        StringBuffer sb = new StringBuffer();
+        for(int i = 0; i < length; i++) {
+            index = (int) (charSet.length * Math.random());
+            sb.append(charSet[index]);
+        }
+
+        return sb.toString();
     }
 }
