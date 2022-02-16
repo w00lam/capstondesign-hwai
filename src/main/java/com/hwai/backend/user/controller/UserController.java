@@ -76,7 +76,7 @@ public class UserController {
     }
 
     @PatchMapping("/find")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.OK)
     public FindPwResponseDto findPw(@RequestBody FindPwRequestDto findPwRequestDto) {
         FindPwResponseDto findPwResponseDto = userService.findPw(findPwRequestDto);
         log.info(FIND_PW_SUCCESS_MESSAGE);
