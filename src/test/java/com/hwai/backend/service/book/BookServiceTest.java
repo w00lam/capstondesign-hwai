@@ -100,17 +100,10 @@ public class BookServiceTest {
                 .title("title")
                 .category(save)
                 .build();
-        Book book2 = Book.builder()
-                .title("title2")
-                .category(save)
-                .build();
         Book add1 = bookRepository.save(book1);
-        Book add2 = bookRepository.save(book2);
 
         //when
-        List<LendRequestDto> lendRequestDto = new ArrayList<>();
-        lendRequestDto.add(new LendRequestDto(member.getId(), add1.getId()));
-        lendRequestDto.add(new LendRequestDto(member.getId(), add2.getId()));
+        LendRequestDto lendRequestDto = new LendRequestDto(member.getId(), add1.getId());
 
         Message message = bookService.lend(lendRequestDto);
 
