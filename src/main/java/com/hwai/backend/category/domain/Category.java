@@ -24,9 +24,6 @@ public class Category {
     @Column(nullable = false)
     private String shelf;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.REFRESH)
-    private List<Book> bookList = new ArrayList<Book>();
-
     @Builder
     public Category(String genre, String shelf) {
         this.genre = genre;
