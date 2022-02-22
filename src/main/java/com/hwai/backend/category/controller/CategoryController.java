@@ -1,6 +1,8 @@
 package com.hwai.backend.category.controller;
 
+import com.hwai.backend.book.controller.dto.LendRequestDto;
 import com.hwai.backend.category.controller.dto.AddRequestDto;
+import com.hwai.backend.category.controller.dto.ChangeRequestDto;
 import com.hwai.backend.category.controller.dto.ShelfResponseDto;
 import com.hwai.backend.category.service.CategoryService;
 import com.hwai.backend.common.message.Message;
@@ -34,5 +36,12 @@ public class CategoryController {
         List<ShelfResponseDto> shelfResponseDtoList = categoryService.viewShelf();
         log.info(VIEW_SHELF_SUCCESS_MESSAGE);
         return shelfResponseDtoList;
+    }
+
+    @PatchMapping("/change")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void change(@RequestBody List<ChangeRequestDto> changeRequestDtoList) {
+        Message message = categoryService.change(changeRequestDtoList);
+        log.info(message.getMessage());
     }
 }

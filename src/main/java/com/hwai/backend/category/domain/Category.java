@@ -1,6 +1,7 @@
 package com.hwai.backend.category.domain;
 
 import com.hwai.backend.book.domain.Book;
+import com.hwai.backend.category.controller.dto.ChangeRequestDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,5 +29,9 @@ public class Category {
     public Category(String genre, String shelf) {
         this.genre = genre;
         this.shelf = shelf;
+    }
+
+    public void change(ChangeRequestDto changeRequestDto) {
+        this.shelf = changeRequestDto.getShelf();
     }
 }
