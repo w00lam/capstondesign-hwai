@@ -30,6 +30,7 @@ public class UserService {
     private static final String UPDATE_PW_MESSAGE = "비밀번호 변경 완료";
     private static final String PASSWORD_EQUAL_MESSAGE = "이전 비밀번호와 동일합니다.";
     private static final String BOOK_LIST_IS_EMPTY = "대출중인 책이 없습니다.";
+    private static final String LIST_IS_NOT_EMPTY = "대출중인 책이 있습니다.";
 
     @Transactional
     public Message join(JoinRequestDto joinRequestDto) {
@@ -42,6 +43,7 @@ public class UserService {
     @Transactional
     public Message withdraw(Long id) {
         User user = findUserById(id);
+        checkList(user);
         userRepository.delete(user);
         return new Message(WITHDRAW_SUCCESS_MESSAGE);
     }
@@ -114,6 +116,12 @@ public class UserService {
         }
     }
 
+    private void checkList(User user) {
+        if (!(user.getBooks().isEmpty())) {
+            throw new BadRequestException(LIST_IS_NOT_EMPTY);
+        }
+    }
+
     private User findUserById(Long userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_MESSAGE));
@@ -126,26 +134,26 @@ public class UserService {
     }
 
     private void checkUser(String name, String birth, String email) {
-        if(!(userRepository.existsByName(name) && userRepository.existsByBirth(birth)
-        && userRepository.existsByEmail(email))) {
+        if (!(userRepository.existsByName(name) && userRepository.existsByBirth(birth)
+                && userRepository.existsByEmail(email))) {
             throw new BadRequestException(USER_NOT_FOUND_MESSAGE);
         }
     }
 
     private String randomPw(int length) {
-        int index = 0;
-        char[] charSet = new char[] {
-                '0','1','2','3','4','5','6','7','8','9'
-                ,'a','b','c','d','e','f','g','h','i','j','k'
-                ,'l','n','m','o','p','q','r','s','t','u','v'
-                ,'w','s','y','z'};
+        int index;
+        char[] charSet = new char[]{
+                '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
+                , 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k'
+                , 'l', 'n', 'm', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v'
+                , 'w', 's', 'y', 'z'};
 
-        StringBuffer sb = new StringBuffer();
-        for(int i = 0; i < length; i++) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < length; i++) {
             index = (int) (charSet.length * Math.random());
-            sb.append(charSet[index]);
+            stringBuilder.append(charSet[index]);
         }
 
-        return sb.toString();
+        return stringBuilder.toString();
     }
 }
