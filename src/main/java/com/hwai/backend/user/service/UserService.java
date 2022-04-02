@@ -8,6 +8,7 @@ import com.hwai.backend.user.controller.dto.*;
 import com.hwai.backend.user.domian.User;
 import com.hwai.backend.user.domian.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,6 +32,7 @@ public class UserService {
     private static final String PASSWORD_EQUAL_MESSAGE = "이전 비밀번호와 동일합니다.";
     private static final String BOOK_LIST_IS_EMPTY = "대출중인 책이 없습니다.";
     private static final String LIST_IS_NOT_EMPTY = "대출중인 책이 있습니다.";
+    private static final String SEND_MAIL_SUCCESS = "메일 전송 성공";
 
     @Transactional
     public Message join(JoinRequestDto joinRequestDto) {
@@ -90,12 +92,30 @@ public class UserService {
     }
 
     @Transactional
-    public FindPwResponseDto findPw(FindPwRequestDto findPwRequestDto) {
-        checkUser(findPwRequestDto.getName(), findPwRequestDto.getBirth(), findPwRequestDto.getEmail());
-        User findUser = userRepository.findByEmail(findPwRequestDto.getEmail())
-                .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_MESSAGE));
-        findUser.findPw(randomPw(7));
-        return new FindPwResponseDto(findUser);
+    public MailDto createMailAndChangePwd(String userEmail) {
+        String newPw = randomPw(7);
+        MailDto mailDto = new MailDto();
+        mailDto.setAddress(userEmail);
+        mailDto.setTitle("임시비밀번호 안내 이메일 입니다.");
+        mailDto.setMessage("안녕하세요.\n" + " 임시비밀번호 안내 관련 이메일 입니다.\n" + " 회원님의 임시 비밀번호는 "
+                + newPw + " 입니다.\n" + "로그인 후에 꼭 비밀번호 변경을 해주세요.\n" + "감사합니다.");
+        userRepository.setpw(newPw, userEmail);
+
+        return mailDto;
+    }
+
+    @Transactional
+    public Message sendEmail(MailDto mailDto) {
+        SimpleMailMessage message = new SimpleMailMessage();
+
+        message.setTo(mailDto.getAddress());
+        message.setSubject(mailDto.getTitle());
+        message.setText(mailDto.getMessage());
+        message.setFrom("wlam135@naver.com");
+        message.setReplyTo("wlam135@naver.com");
+
+
+        return new Message(SEND_MAIL_SUCCESS);
     }
 
     private void checkDuplicateEmail(String email) {
@@ -130,13 +150,6 @@ public class UserService {
     private void checkEmpty(List<Book> bookList) {
         if (bookList.isEmpty()) {
             throw new BadRequestException(BOOK_LIST_IS_EMPTY);
-        }
-    }
-
-    private void checkUser(String name, String birth, String email) {
-        if (!(userRepository.existsByName(name) && userRepository.existsByBirth(birth)
-                && userRepository.existsByEmail(email))) {
-            throw new BadRequestException(USER_NOT_FOUND_MESSAGE);
         }
     }
 

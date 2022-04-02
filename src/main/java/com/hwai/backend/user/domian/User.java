@@ -53,7 +53,4 @@ public class User {
     public void updatePw(PwUpdateRequestDto pwUpdateRequestDto){
         this.pw = pwUpdateRequestDto.getNew_pw();
     }
-    public void findPw(String temp_pw) {
-        this.pw = temp_pw;
-    }
 }

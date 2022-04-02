@@ -18,7 +18,6 @@ public class UserController {
     private static final String LOGIN_SUCCESS_MESSAGE = "로그인 성공";
     private static final String VIEW_MY_PAGE_SUCCESS_MESSAGE = "마이페이지 조회 성공";
     private static final String VIEW_MY_BOOK_LIST_SUCCESS_MESSAGE = "대출중인 책 리스트 조회 성공";
-    private static final String FIND_PW_SUCCESS_MESSAGE = "비밀번호 찾기 성공";
 
     private final UserService userService;
 
@@ -75,11 +74,11 @@ public class UserController {
         return myListResponseDtoList;
     }
 
-    @PatchMapping("/find")
+    @PostMapping("/sendEmail")
     @ResponseStatus(HttpStatus.OK)
-    public FindPwResponseDto findPw(@RequestBody FindPwRequestDto findPwRequestDto) {
-        FindPwResponseDto findPwResponseDto = userService.findPw(findPwRequestDto);
-        log.info(FIND_PW_SUCCESS_MESSAGE);
-        return findPwResponseDto;
+    public void sendEmail(@RequestParam("userEmail") String userEmail) {
+        MailDto mailDto = userService.createMailAndChangePwd(userEmail);
+        Message message = userService.sendEmail(mailDto);
+        log.info(message.getMessage());
     }
 }
