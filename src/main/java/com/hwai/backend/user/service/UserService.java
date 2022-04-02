@@ -9,9 +9,11 @@ import com.hwai.backend.user.domian.User;
 import com.hwai.backend.user.domian.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -97,8 +99,7 @@ public class UserService {
         MailDto mailDto = new MailDto();
         mailDto.setAddress(userEmail);
         mailDto.setTitle("임시비밀번호 안내 이메일 입니다.");
-        mailDto.setMessage("안녕하세요.\n" + " 임시비밀번호 안내 관련 이메일 입니다.\n" + " 회원님의 임시 비밀번호는 "
-                + newPw + " 입니다.\n" + "로그인 후에 꼭 비밀번호 변경을 해주세요.\n" + "감사합니다.");
+        mailDto.setMessage(MessageFormat.format("안녕하세요.\n 임시비밀번호 안내 관련 이메일입니다.\n 회원님의 임시 비밀번호는 {0} 입니다.\n로그인 후에 꼭 비밀번호 변경을 해주세요.\n감사합니다.", newPw));
         userRepository.setpw(newPw, userEmail);
 
         return mailDto;
@@ -106,6 +107,7 @@ public class UserService {
 
     @Transactional
     public Message sendEmail(MailDto mailDto) {
+        JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
         SimpleMailMessage message = new SimpleMailMessage();
 
         message.setTo(mailDto.getAddress());
@@ -113,8 +115,8 @@ public class UserService {
         message.setText(mailDto.getMessage());
         message.setFrom("wlam135@naver.com");
         message.setReplyTo("wlam135@naver.com");
-
-
+        javaMailSender.send(message);
+        
         return new Message(SEND_MAIL_SUCCESS);
     }
 
