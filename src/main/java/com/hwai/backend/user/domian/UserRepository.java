@@ -11,8 +11,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE USER u SET u.pw = :newPw WHERE u.email = :userEmail", nativeQuery = true)
-    int setpw(String newPw, String userEmail);
+    @Query(value =
+            "UPDATE user u SET u.pw = :newPw WHERE u.email = :userEmail"
+            , nativeQuery = true)
+    void setpw(String newPw, String userEmail);
 
     Optional<User> findByEmail(String email);
 

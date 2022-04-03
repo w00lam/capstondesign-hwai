@@ -74,7 +74,7 @@ public class UserController {
         return myListResponseDtoList;
     }
 
-    @PostMapping("/sendEmail")
+    @PostMapping("/email")
     @ResponseStatus(HttpStatus.OK)
     public void sendEmail(@RequestParam("userEmail") String userEmail) {
         MailDto mailDto = userService.createMailAndChangePwd(userEmail);
