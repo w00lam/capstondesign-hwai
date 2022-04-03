@@ -8,11 +8,12 @@ import com.hwai.backend.user.controller.dto.*;
 import com.hwai.backend.user.domian.User;
 import com.hwai.backend.user.domian.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.mail.internet.MimeMessage;
 import java.text.MessageFormat;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final JavaMailSender mailSender;
 
     private static final String SIGN_UP_SUCCESS_MESSAGE = "회원가입 성공";
     private static final String WITHDRAW_SUCCESS_MESSAGE = "회원탈퇴 성공";
@@ -98,7 +100,7 @@ public class UserService {
         String newPw = randomPw(7);
         MailDto mailDto = new MailDto();
         mailDto.setAddress(userEmail);
-        mailDto.setTitle("임시비밀번호 안내 이메일 입니다.");
+        mailDto.setTitle("임시비밀번호 안내 이메일입니다.");
         mailDto.setMessage(MessageFormat.format("안녕하세요.\n 임시비밀번호 안내 관련 이메일입니다.\n 회원님의 임시 비밀번호는 {0} 입니다.\n로그인 후에 꼭 비밀번호 변경을 해주세요.\n감사합니다.", newPw));
         userRepository.setpw(newPw, userEmail);
 
@@ -106,17 +108,17 @@ public class UserService {
     }
 
     @Transactional
-    public Message sendEmail(MailDto mailDto) {
-        JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
-        SimpleMailMessage message = new SimpleMailMessage();
+    public Message sendEmail(MailDto mailDto) throws Exception {
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, "UTF-8");
 
-        message.setTo(mailDto.getAddress());
-        message.setSubject(mailDto.getTitle());
-        message.setText(mailDto.getMessage());
-        message.setFrom("wlam135@naver.com");
-        message.setReplyTo("wlam135@naver.com");
-        javaMailSender.send(message);
-        
+        mimeMessageHelper.setFrom("wlam135@naver.com");
+        mimeMessageHelper.setTo(mailDto.getAddress());
+        mimeMessageHelper.setSubject(mailDto.getTitle());
+        mimeMessageHelper.setText(mailDto.getMessage());
+
+        mailSender.send(mimeMessage);
+
         return new Message(SEND_MAIL_SUCCESS);
     }
 
