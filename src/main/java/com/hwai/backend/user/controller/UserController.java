@@ -76,7 +76,7 @@ public class UserController {
 
     @PostMapping("/email")
     @ResponseStatus(HttpStatus.OK)
-    public void sendEmail(@RequestParam("userEmail") String userEmail) {
+    public void sendEmail(@RequestBody String userEmail) {
         MailDto mailDto = userService.createMailAndChangePwd(userEmail);
         Message message = userService.sendEmail(mailDto);
         log.info(message.getMessage());
