@@ -8,8 +8,11 @@ import com.hwai.backend.user.controller.dto.*;
 import com.hwai.backend.user.domian.User;
 import com.hwai.backend.user.domian.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -107,17 +110,17 @@ public class UserService {
         return mailDto;
     }
 
-    @Transactional
-    public Message sendEmail(MailDto mailDto) throws Exception {
-        MimeMessage mimeMessage = mailSender.createMimeMessage();
-        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, "UTF-8");
+    @Autowired
+    public JavaMailSender javaMailSender;
 
-        mimeMessageHelper.setFrom("wlam135@naver.com");
-        mimeMessageHelper.setTo(mailDto.getAddress());
-        mimeMessageHelper.setSubject(mailDto.getTitle());
-        mimeMessageHelper.setText(mailDto.getMessage());
-
-        mailSender.send(mimeMessage);
+    @Async
+    public Message sendEmail(MailDto mailDto) {
+        SimpleMailMessage simpleMessage = new SimpleMailMessage();
+        simpleMessage.setFrom("wlam135@naver.com");
+        simpleMessage.setTo(mailDto.getAddress());
+        simpleMessage.setSubject(mailDto.getTitle());
+        simpleMessage.setText(mailDto.getMessage());
+        javaMailSender.send(simpleMessage);
 
         return new Message(SEND_MAIL_SUCCESS);
     }
