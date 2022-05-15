@@ -46,6 +46,7 @@ public class BookService {
     @Transactional
     public Message lend(LendRequestDto lendRequestDto) {
         User user = findUserById(lendRequestDto.getUserId());
+        checkStack(user);
         Book book = findBookById(lendRequestDto.getBookId());
         book.lend(user);
         return new Message(LEND_BOOK_MESSAGE);
