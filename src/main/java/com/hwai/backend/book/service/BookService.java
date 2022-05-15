@@ -5,12 +5,12 @@ import com.hwai.backend.book.controller.dto.ChecklistResponseDto;
 import com.hwai.backend.book.controller.dto.LendAbleListResponseDto;
 import com.hwai.backend.category.domain.Category;
 import com.hwai.backend.category.domain.CategoryRepository;
+import com.hwai.backend.common.exception.BadRequestException;
 import com.hwai.backend.common.exception.NotFoundException;
 import com.hwai.backend.book.controller.dto.LendRequestDto;
 import com.hwai.backend.book.domain.Book;
 import com.hwai.backend.book.domain.BookRepository;
 import com.hwai.backend.common.message.Message;
-import com.hwai.backend.user.controller.dto.MyListResponseDto;
 import com.hwai.backend.user.domian.User;
 import com.hwai.backend.user.domian.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +32,7 @@ public class BookService {
     private static final String USER_NOT_FOUND_MESSAGE = "해당 유저가 존재하지 않습니다.";
     private static final String CATEGORY_NOT_FOUND_MESSAGE = "해당 카테고리가 존재하지 않습니다.";
     private static final String BOOK_NOT_FOUND_MESSAGE = "해당 책이 존재하지 않습니다.";
+    private static final String STACK_IS_FULL = "대출가능한 권수를 초과했습니다.";
 
     @Transactional
     public Message save(BookSaveRequestDto bookSaveRequestDto) {
@@ -72,5 +73,11 @@ public class BookService {
     private Book findBookById(Long bookId) {
         return bookRepository.findById(bookId)
                 .orElseThrow(() -> new NotFoundException(BOOK_NOT_FOUND_MESSAGE));
+    }
+
+    private void checkStack(User user){
+        if(user.getBooks().size()>=3){
+            throw new BadRequestException(STACK_IS_FULL);
+        }
     }
 }

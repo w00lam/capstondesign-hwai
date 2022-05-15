@@ -45,7 +45,6 @@ public class Book {
         setUser(user);
     }
 
-    // 연관관계 편의 메소드
     public void setUser(User user) {
         this.user = user;
         user.getBooks().add(this);

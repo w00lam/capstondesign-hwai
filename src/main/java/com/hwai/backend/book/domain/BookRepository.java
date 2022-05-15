@@ -8,7 +8,8 @@ import java.util.List;
 public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Query(value =
-            "SELECT * FROM book b INNER JOIN category c ON b.category_id = c.id WHERE b.current != c.shelf"
+            "SELECT * FROM book b INNER JOIN category c ON b.category_id = c.id " +
+                    "WHERE b.current != c.shelf AND b.current != '대출중'"
             , nativeQuery = true)
     List<Book> findCheck();
 
