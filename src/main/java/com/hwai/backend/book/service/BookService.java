@@ -71,7 +71,7 @@ public class BookService {
         User user = book.getUser();
         if (returnBookRequestDto.getShelfId().equals(category.getShelf())) {
             book.returnBook(user, returnBookRequestDto.getShelfId());
-            bookRepository.returnBook(book.getId());
+            bookRepository.returnBook(returnBookRequestDto.getBookId());
             return new Message(RETURN_SUCCESS_MESSAGE);
         }
         else{

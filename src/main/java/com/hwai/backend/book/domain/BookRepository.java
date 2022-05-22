@@ -22,5 +22,5 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     @Query(value =
         "UPDATE book b SET b.due_date = NULL, b.user_id = NULL WHERE b.id == :bookId"
         , nativeQuery = true)
-    void returnBook(@Param("bookId")Long bookId);
+    void returnBook(@Param("bookId")String bookId);
 }
