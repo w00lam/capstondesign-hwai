@@ -19,7 +19,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findLendAble();
 
     @Query(value =
-        "UPDATE book b SET due_date = NULL, user_id = NULL WHERE b.id = ?1"
+        "UPDATE book b SET b.due_date = NULL, b.user_id = NULL WHERE b.id == ?1"
         , nativeQuery = true)
     void returnBook(Long bookId);
 }
