@@ -2,6 +2,7 @@ package com.hwai.backend.book.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findLendAble();
 
     @Query(value =
-        "UPDATE book b SET b.due_date = NULL, b.user_id = NULL WHERE b.id == ?1"
+        "UPDATE book b SET b.due_date = NULL, b.user_id = NULL WHERE b.id == :bookId"
         , nativeQuery = true)
-    void returnBook(Long bookId);
+    void returnBook(@Param("bookId")Long bookId);
 }
