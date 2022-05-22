@@ -69,7 +69,7 @@ public class BookService {
         Book book = findBookById(Long.parseLong(returnBookRequestDto.getBookId()));
         Category category = book.getCategory();
         User user = book.getUser();
-        if (returnBookRequestDto.getShelfId() == category.getShelf()) {
+        if (returnBookRequestDto.getShelfId().equals(category.getShelf())) {
             book.returnBook(user, returnBookRequestDto.getShelfId());
             bookRepository.returnBook(book.getId());
             return new Message(RETURN_SUCCESS_MESSAGE);
