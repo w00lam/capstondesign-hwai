@@ -17,4 +17,9 @@ public interface BookRepository extends JpaRepository<Book, Long> {
             "SELECT * FROM book b WHERE b.user_id IS NULL"
             , nativeQuery = true)
     List<Book> findLendAble();
+
+    @Query(value =
+        "UPDATE book SET due_date = NULL, user_id = NULL WHERE b.id == ?1"
+        , nativeQuery = true)
+    void returnBook(Long bookId);
 }

@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Null;
 import java.time.LocalDate;
 
 @Getter
@@ -43,6 +44,11 @@ public class Book {
         this.due_date = LocalDate.now().plusDays(14);
         this.current = "대출중";
         setUser(user);
+    }
+
+    public void returnBook(User user, String current) {
+        this.current = current;
+        user.getBooks().remove(this);
     }
 
     public void setUser(User user) {

@@ -1,13 +1,10 @@
 package com.hwai.backend.book.service;
 
-import com.hwai.backend.book.controller.dto.BookSaveRequestDto;
-import com.hwai.backend.book.controller.dto.ChecklistResponseDto;
-import com.hwai.backend.book.controller.dto.LendAbleListResponseDto;
+import com.hwai.backend.book.controller.dto.*;
 import com.hwai.backend.category.domain.Category;
 import com.hwai.backend.category.domain.CategoryRepository;
 import com.hwai.backend.common.exception.BadRequestException;
 import com.hwai.backend.common.exception.NotFoundException;
-import com.hwai.backend.book.controller.dto.LendRequestDto;
 import com.hwai.backend.book.domain.Book;
 import com.hwai.backend.book.domain.BookRepository;
 import com.hwai.backend.common.message.Message;
@@ -33,11 +30,12 @@ public class BookService {
     private static final String CATEGORY_NOT_FOUND_MESSAGE = "해당 카테고리가 존재하지 않습니다.";
     private static final String BOOK_NOT_FOUND_MESSAGE = "해당 책이 존재하지 않습니다.";
     private static final String STACK_IS_FULL = "대출가능한 권수를 초과했습니다.";
+    private static final String RETURN_SUCCESS_MESSAGE = "책 반납 성공";
+    private static final String DISCORD_ID_MESSAGE = "책 반납 실패";
 
     @Transactional
     public Message save(BookSaveRequestDto bookSaveRequestDto) {
-        Category category = categoryRepository.findById(bookSaveRequestDto.getCategoryId())
-                .orElseThrow(() -> new NotFoundException(CATEGORY_NOT_FOUND_MESSAGE));
+        Category category = findCategoryById(bookSaveRequestDto.getCategoryId());
         Book book = bookSaveRequestDto.toEntity(category);
         bookRepository.save(book);
         return new Message(BOOK_SAVE_MESSAGE);
@@ -66,6 +64,21 @@ public class BookService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
+    public Message returnBook(ReturnBookRequestDto returnBookRequestDto) {
+        Book book = findBookById(Long.parseLong(returnBookRequestDto.getBookId()));
+        Category category = book.getCategory();
+        User user = book.getUser();
+        if (returnBookRequestDto.getShelfId() == category.getShelf()) {
+            book.returnBook(user, returnBookRequestDto.getShelfId());
+            bookRepository.returnBook(book.getId());
+            return new Message(RETURN_SUCCESS_MESSAGE);
+        }
+        else{
+            return new Message(DISCORD_ID_MESSAGE);
+        }
+    }
+
     private User findUserById(Long userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND_MESSAGE));
@@ -76,9 +89,14 @@ public class BookService {
                 .orElseThrow(() -> new NotFoundException(BOOK_NOT_FOUND_MESSAGE));
     }
 
-    private void checkStack(User user){
-        if(user.getBooks().size()>=3){
+    private void checkStack(User user) {
+        if (user.getBooks().size() >= 3) {
             throw new BadRequestException(STACK_IS_FULL);
         }
+    }
+
+    private Category findCategoryById(Long categoryId) {
+        return categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new NotFoundException(CATEGORY_NOT_FOUND_MESSAGE));
     }
 }

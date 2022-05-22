@@ -1,9 +1,6 @@
 package com.hwai.backend.book.controller;
 
-import com.hwai.backend.book.controller.dto.BookSaveRequestDto;
-import com.hwai.backend.book.controller.dto.ChecklistResponseDto;
-import com.hwai.backend.book.controller.dto.LendAbleListResponseDto;
-import com.hwai.backend.book.controller.dto.LendRequestDto;
+import com.hwai.backend.book.controller.dto.*;
 import com.hwai.backend.common.message.Message;
 import com.hwai.backend.book.service.BookService;
 import lombok.RequiredArgsConstructor;
@@ -52,5 +49,12 @@ public class BookController {
         List<LendAbleListResponseDto> lendAbleListResponseDtoList = bookService.findLendAble();
         log.info(VIEW_ABLE_LIST_SUCCESS_MESSAGE);
         return lendAbleListResponseDtoList;
+    }
+
+    @PatchMapping("/return")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void re_turn(@RequestBody ReturnBookRequestDto returnBookRequestDto) {
+        Message message = bookService.returnBook(returnBookRequestDto);
+        log.info(message.getMessage());
     }
 }
